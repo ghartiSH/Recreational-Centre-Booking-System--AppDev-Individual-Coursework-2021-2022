@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +23,8 @@ namespace Coursework
             InitializeComponent();
             xmlSerializer = new XmlSerializer(typeof(List<Visitors>));
             visitors = new List<Visitors>();
+            LoadTicket();
+            LoadXml();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -32,10 +35,10 @@ namespace Coursework
         private void Register_Click(object sender, EventArgs e)
         {
             Visitors vs = new Visitors();
-            FileStream file = new FileStream("./visitors.xml", FileMode.Create, FileAccess.Write);
+            FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/visitors.xml", FileMode.Create, FileAccess.Write);
             vs.fullname = fullNameTxt.Text;
             vs.email = emailTxt.Text;
-            vs.phone = phone.Text;
+            vs.phone = phoneTxt.Text;
             vs.category = categoryCmb.Text;
             vs.inDateTime = DateTime.Parse(ddCmb.Text + "-" + mmCmb.Text + "-" + yyCmb.Text + " " + hhCmb.Text + ":" + minCmb.Text);
             vs.totalVisitors = int.Parse(totalVisitorsCmb.Text);
@@ -55,11 +58,227 @@ namespace Coursework
 
         private void ViewCurrentVisitors_Click(object sender, EventArgs e)
         {
-            FileStream file = new FileStream("./visitors.xml", FileMode.Open, FileAccess.Read);
-            visitors = (List<Visitors>)xmlSerializer.Deserialize(file);
+            try{
+                FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/visitors.xml", FileMode.Open, FileAccess.Read);
+                visitors = (List<Visitors>)xmlSerializer.Deserialize(file);
 
-            visitorListGrid.DataSource = visitors;
-            file.Close();
+                visitorListGrid.DataSource = visitors;
+                file.Close();
+            }
+            catch
+            {
+                MessageBox.Show("No records Stored");
+            }
+        }
+
+        private void LoadTicket()
+        {
+            try
+            {
+
+                DataTable dt = new DataTable();
+                string[] lines = System.IO.File.ReadAllLines("C:/Users/bhara/source/repos/Coursework/ticket.csv");
+                if (lines.Length > 0)
+                {
+                    string firstLine = lines[0];
+                    string[] headerLabels = firstLine.Split(',');
+                    foreach (string headerword in headerLabels)
+                    {
+                        dt.Columns.Add(new DataColumn(headerword));
+                    }
+                    for (int i = 1; i < lines.Length; i++)
+                    {
+                        string[] dataWords = lines[i].Split(',');
+                        DataRow dr = dt.NewRow();
+                        int columnIndex = 0;
+                        foreach (string headerWord in headerLabels)
+                        {
+                            dr[headerWord] = dataWords[columnIndex++];
+
+                        }
+                        dt.Rows.Add(dr);
+                    }
+                }
+                if (dt.Rows.Count > 0)
+                {
+                    ticketGrid.DataSource = dt;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ticket File not Found");
+            }
+        }
+
+        private void LoadXml()
+        {
+            try
+            {
+                FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/visitors.xml", FileMode.Open, FileAccess.Read);
+                visitors = (List<Visitors>)xmlSerializer.Deserialize(file);
+
+                visitorListGrid.DataSource = visitors;
+                file.Close();
+            }
+            catch
+            {
+                MessageBox.Show("No records Stored");
+            }
+        }
+
+        private void Find_Click(object sender, EventArgs e)
+        {
+
+            List<Visitors> matchList = FindVisitors();
+            checkoutGrid.DataSource = matchList;
+              
+        }
+
+        private void Calculate_Click(object sender, EventArgs e)
+        {
+            List<Visitors> matchList = FindVisitors();
+            DataTable dt = GetTicket();
+            ArrayList arr = new ArrayList();
+            int totalBill=0;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                foreach (DataColumn column in dt.Columns)
+                {
+
+                    arr.Add(row[column]);
+                }
+            }
+
+            foreach (var visitor in matchList)
+            {
+                int outTime = int.Parse(outHHCmb.Text);
+                int inTime = visitor.inDateTime.Hour;
+
+                var result = (outTime - inTime);
+
+                
+                for (int i=0; i<arr.Count; i++)
+                {
+
+                    if (visitor.totalVisitors < 5)
+                    {
+                        if (arr[i].ToString() == visitor.category)
+                        {
+                            if (result == 1)
+                            {
+                                totalBill = visitor.totalVisitors * int.Parse(arr[i + 1].ToString());
+                            }
+                            else if (result == 2)
+                            {
+                                totalBill = visitor.totalVisitors * int.Parse(arr[i + 2].ToString());
+                            }
+                            else if (result == 3)
+                            {
+                                totalBill = visitor.totalVisitors * int.Parse(arr[i + 3].ToString());
+                            }
+                            else if (result == 4)
+                            {
+                                totalBill = visitor.totalVisitors * int.Parse(arr[i + 4].ToString());
+                            }
+                            else
+                            {
+                                totalBill = visitor.totalVisitors * int.Parse(arr[i + 5].ToString());
+                            }
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (arr[i].ToString() == visitor.category)
+                        {
+                            if (result == 1)
+                            {
+                                totalBill = int.Parse(arr[i + 1].ToString());
+                            }
+                            else if (result == 2)
+                            {
+                                totalBill = int.Parse(arr[i + 2].ToString());
+                            }
+                            else if (result == 3)
+                            {
+                                totalBill = int.Parse(arr[i + 3].ToString());
+                            }
+                            else if (result == 4)
+                            {
+                                totalBill = int.Parse(arr[i + 4].ToString());
+                            }
+                            else
+                            {
+                                totalBill = int.Parse(arr[i + 5].ToString());
+                            }
+                            break;
+                        }
+                    }
+                    
+                }
+                message.Text = "Hello " + visitor.fullname + " !!!... You've played for " + result + " hours.";
+            }
+            
+            billTxt.Text = totalBill.ToString();
+            
+        }
+
+        private List<Visitors> FindVisitors()
+        {
+            List<Visitors> matchList = new List<Visitors>();
+            try
+            {
+                FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/visitors.xml", FileMode.Open, FileAccess.Read);
+                visitors = (List<Visitors>)xmlSerializer.Deserialize(file);
+
+
+                string phone = searchPhoneTxt.Text;
+
+                foreach (var visitor in visitors)
+                {
+                    if (visitor.phone == phone)
+                    {
+                        matchList.Add(visitor);
+                    }
+                }
+                file.Close();
+
+            }
+            catch
+            {
+                MessageBox.Show("No visitors added");
+            }
+            return matchList;
+
+        }
+
+        private DataTable GetTicket()
+        {
+            DataTable dt = new DataTable();
+            string[] lines = System.IO.File.ReadAllLines("C:/Users/bhara/source/repos/Coursework/ticket.csv");
+            if (lines.Length > 0)
+            {
+                string firstLine = lines[0];
+                string[] headerLabels = firstLine.Split(',');
+                foreach (string headerword in headerLabels)
+                {
+                    dt.Columns.Add(new DataColumn(headerword));
+                }
+                for (int i = 1; i < lines.Length; i++)
+                {
+                    string[] dataWords = lines[i].Split(',');
+                    DataRow dr = dt.NewRow();
+                    int columnIndex = 0;
+                    foreach (string headerWord in headerLabels)
+                    {
+                        dr[headerWord] = dataWords[columnIndex++];
+
+                    }
+                    dt.Rows.Add(dr);
+                }
+            }
+            return dt;
         }
     }
 }

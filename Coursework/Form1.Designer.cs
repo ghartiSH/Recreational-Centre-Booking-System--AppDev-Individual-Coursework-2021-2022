@@ -32,7 +32,7 @@ namespace Coursework
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Home = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ticketGrid = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -59,6 +59,7 @@ namespace Coursework
             this.label2 = new System.Windows.Forms.Label();
             this.VisitorsList = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ViewCurrentVisitors = new System.Windows.Forms.Button();
             this.ViewPastVisitors = new System.Windows.Forms.Button();
             this.visitorListGrid = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
@@ -75,7 +76,7 @@ namespace Coursework
             this.outHHCmb = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.message = new System.Windows.Forms.Label();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.checkoutGrid = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.Find = new System.Windows.Forms.Button();
             this.searchPhoneTxt = new System.Windows.Forms.TextBox();
@@ -109,18 +110,18 @@ namespace Coursework
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.label15 = new System.Windows.Forms.Label();
             this.AdminPanel = new System.Windows.Forms.TabPage();
-            this.ViewCurrentVisitors = new System.Windows.Forms.Button();
+            this.openTicket = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.Home.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketGrid)).BeginInit();
             this.panel1.SuspendLayout();
             this.VisitorsList.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.visitorListGrid)).BeginInit();
             this.CheckoutVisitor.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkoutGrid)).BeginInit();
             this.panel5.SuspendLayout();
             this.DailyReport.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -162,20 +163,21 @@ namespace Coursework
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Controls.Add(this.ticketGrid);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(5, 348);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1042, 256);
             this.panel2.TabIndex = 5;
             // 
-            // dataGridView1
+            // ticketGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 27);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1031, 224);
-            this.dataGridView1.TabIndex = 2;
+            this.ticketGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ticketGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ticketGrid.Location = new System.Drawing.Point(6, 27);
+            this.ticketGrid.Name = "ticketGrid";
+            this.ticketGrid.Size = new System.Drawing.Size(1031, 224);
+            this.ticketGrid.TabIndex = 2;
             // 
             // label3
             // 
@@ -478,7 +480,9 @@ namespace Coursework
             this.categoryCmb.Items.AddRange(new object[] {
             "Adult",
             "Child",
-            "Group"});
+            "Group of 5",
+            "Group of 10",
+            "Group of 15"});
             this.categoryCmb.Location = new System.Drawing.Point(83, 113);
             this.categoryCmb.Name = "categoryCmb";
             this.categoryCmb.Size = new System.Drawing.Size(114, 27);
@@ -556,7 +560,7 @@ namespace Coursework
             // emailTxt
             // 
             this.emailTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailTxt.Location = new System.Drawing.Point(450, 50);
+            this.emailTxt.Location = new System.Drawing.Point(460, 51);
             this.emailTxt.Name = "emailTxt";
             this.emailTxt.Size = new System.Drawing.Size(242, 26);
             this.emailTxt.TabIndex = 4;
@@ -565,7 +569,7 @@ namespace Coursework
             // 
             this.email.AutoSize = true;
             this.email.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.email.Location = new System.Drawing.Point(348, 54);
+            this.email.Location = new System.Drawing.Point(357, 54);
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(106, 19);
             this.email.TabIndex = 3;
@@ -574,7 +578,7 @@ namespace Coursework
             // fullNameTxt
             // 
             this.fullNameTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullNameTxt.Location = new System.Drawing.Point(134, 48);
+            this.fullNameTxt.Location = new System.Drawing.Point(131, 47);
             this.fullNameTxt.Name = "fullNameTxt";
             this.fullNameTxt.Size = new System.Drawing.Size(192, 26);
             this.fullNameTxt.TabIndex = 2;
@@ -583,7 +587,7 @@ namespace Coursework
             // 
             this.fullName.AutoSize = true;
             this.fullName.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullName.Location = new System.Drawing.Point(3, 51);
+            this.fullName.Location = new System.Drawing.Point(-1, 51);
             this.fullName.Name = "fullName";
             this.fullName.Size = new System.Drawing.Size(135, 19);
             this.fullName.TabIndex = 1;
@@ -625,6 +629,17 @@ namespace Coursework
             this.panel3.Size = new System.Drawing.Size(1039, 557);
             this.panel3.TabIndex = 5;
             // 
+            // ViewCurrentVisitors
+            // 
+            this.ViewCurrentVisitors.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewCurrentVisitors.Location = new System.Drawing.Point(179, 485);
+            this.ViewCurrentVisitors.Name = "ViewCurrentVisitors";
+            this.ViewCurrentVisitors.Size = new System.Drawing.Size(284, 48);
+            this.ViewCurrentVisitors.TabIndex = 33;
+            this.ViewCurrentVisitors.Text = "View Current Visitors";
+            this.ViewCurrentVisitors.UseVisualStyleBackColor = true;
+            this.ViewCurrentVisitors.Click += new System.EventHandler(this.ViewCurrentVisitors_Click);
+            // 
             // ViewPastVisitors
             // 
             this.ViewPastVisitors.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -637,6 +652,7 @@ namespace Coursework
             // 
             // visitorListGrid
             // 
+            this.visitorListGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.visitorListGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.visitorListGrid.Location = new System.Drawing.Point(19, 28);
             this.visitorListGrid.Name = "visitorListGrid";
@@ -689,7 +705,7 @@ namespace Coursework
             this.panel4.Controls.Add(this.outHHCmb);
             this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.message);
-            this.panel4.Controls.Add(this.dataGridView3);
+            this.panel4.Controls.Add(this.checkoutGrid);
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Location = new System.Drawing.Point(9, 54);
@@ -706,6 +722,7 @@ namespace Coursework
             this.Calculate.TabIndex = 36;
             this.Calculate.Text = "Calculate Bill";
             this.Calculate.UseVisualStyleBackColor = true;
+            this.Calculate.Click += new System.EventHandler(this.Calculate_Click);
             // 
             // Checkout
             // 
@@ -854,19 +871,20 @@ namespace Coursework
             // 
             this.message.AutoSize = true;
             this.message.Font = new System.Drawing.Font("Rockwell", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.message.Location = new System.Drawing.Point(410, 332);
+            this.message.Location = new System.Drawing.Point(257, 339);
             this.message.Name = "message";
-            this.message.Size = new System.Drawing.Size(224, 25);
+            this.message.Size = new System.Drawing.Size(17, 25);
             this.message.TabIndex = 5;
-            this.message.Text = "Thanks For Playing !";
+            this.message.Text = " ";
             // 
-            // dataGridView3
+            // checkoutGrid
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(56, 126);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(912, 124);
-            this.dataGridView3.TabIndex = 4;
+            this.checkoutGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.checkoutGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.checkoutGrid.Location = new System.Drawing.Point(56, 126);
+            this.checkoutGrid.Name = "checkoutGrid";
+            this.checkoutGrid.Size = new System.Drawing.Size(912, 124);
+            this.checkoutGrid.TabIndex = 4;
             // 
             // panel5
             // 
@@ -888,6 +906,7 @@ namespace Coursework
             this.Find.TabIndex = 31;
             this.Find.Text = "Find";
             this.Find.UseVisualStyleBackColor = true;
+            this.Find.Click += new System.EventHandler(this.Find_Click);
             // 
             // searchPhoneTxt
             // 
@@ -1082,6 +1101,7 @@ namespace Coursework
             // 
             // dataGridView4
             // 
+            this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Location = new System.Drawing.Point(8, 95);
             this.dataGridView4.Name = "dataGridView4";
@@ -1294,6 +1314,7 @@ namespace Coursework
             // 
             // dataGridView5
             // 
+            this.dataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView5.Location = new System.Drawing.Point(8, 86);
             this.dataGridView5.Name = "dataGridView5";
@@ -1320,16 +1341,9 @@ namespace Coursework
             this.AdminPanel.Text = "Admin Panel";
             this.AdminPanel.UseVisualStyleBackColor = true;
             // 
-            // ViewCurrentVisitors
+            // openTicket
             // 
-            this.ViewCurrentVisitors.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewCurrentVisitors.Location = new System.Drawing.Point(179, 485);
-            this.ViewCurrentVisitors.Name = "ViewCurrentVisitors";
-            this.ViewCurrentVisitors.Size = new System.Drawing.Size(284, 48);
-            this.ViewCurrentVisitors.TabIndex = 33;
-            this.ViewCurrentVisitors.Text = "View Current Visitors";
-            this.ViewCurrentVisitors.UseVisualStyleBackColor = true;
-            this.ViewCurrentVisitors.Click += new System.EventHandler(this.ViewCurrentVisitors_Click);
+            this.openTicket.FileName = "openTicket";
             // 
             // Form1
             // 
@@ -1344,7 +1358,7 @@ namespace Coursework
             this.Home.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketGrid)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.VisitorsList.ResumeLayout(false);
@@ -1356,7 +1370,7 @@ namespace Coursework
             this.CheckoutVisitor.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkoutGrid)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.DailyReport.ResumeLayout(false);
@@ -1382,31 +1396,9 @@ namespace Coursework
         private System.Windows.Forms.TabPage DailyReport;
         private System.Windows.Forms.TabPage WeeklyReport;
         private System.Windows.Forms.TabPage AdminPanel;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox fullNameTxt;
-        private System.Windows.Forms.Label fullName;
-        private System.Windows.Forms.Label totalVisitors;
-        private System.Windows.Forms.Label inTime;
-        private System.Windows.Forms.Label date;
-        private System.Windows.Forms.TextBox phoneTxt;
-        private System.Windows.Forms.Label phone;
-        private System.Windows.Forms.TextBox emailTxt;
-        private System.Windows.Forms.Label email;
-        private System.Windows.Forms.Label children;
-        private System.Windows.Forms.ComboBox minCmb;
-        private System.Windows.Forms.ComboBox hhCmb;
-        private System.Windows.Forms.ComboBox ddCmb;
-        private System.Windows.Forms.ComboBox mmCmb;
-        private System.Windows.Forms.ComboBox yyCmb;
-        private System.Windows.Forms.ComboBox categoryCmb;
-        private System.Windows.Forms.Label category;
-        private System.Windows.Forms.ComboBox totalVisitorsCmb;
-        private System.Windows.Forms.ComboBox childrenCmb;
-        private System.Windows.Forms.Button Register;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ticketGrid;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label4;
@@ -1419,7 +1411,7 @@ namespace Coursework
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TextBox searchPhoneTxt;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView checkoutGrid;
         private System.Windows.Forms.Button Find;
         private System.Windows.Forms.Label message;
         private System.Windows.Forms.ComboBox outMinCmb;
@@ -1456,6 +1448,29 @@ namespace Coursework
         private System.Windows.Forms.Button GenerateGraph;
         private System.Windows.Forms.Button SortByIncome;
         private System.Windows.Forms.Button ViewCurrentVisitors;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button Register;
+        private System.Windows.Forms.ComboBox childrenCmb;
+        private System.Windows.Forms.ComboBox totalVisitorsCmb;
+        private System.Windows.Forms.ComboBox minCmb;
+        private System.Windows.Forms.ComboBox hhCmb;
+        private System.Windows.Forms.ComboBox ddCmb;
+        private System.Windows.Forms.ComboBox mmCmb;
+        private System.Windows.Forms.ComboBox yyCmb;
+        private System.Windows.Forms.ComboBox categoryCmb;
+        private System.Windows.Forms.Label category;
+        private System.Windows.Forms.Label children;
+        private System.Windows.Forms.Label totalVisitors;
+        private System.Windows.Forms.Label inTime;
+        private System.Windows.Forms.Label date;
+        private System.Windows.Forms.TextBox phoneTxt;
+        private System.Windows.Forms.Label phone;
+        private System.Windows.Forms.TextBox emailTxt;
+        private System.Windows.Forms.Label email;
+        private System.Windows.Forms.TextBox fullNameTxt;
+        private System.Windows.Forms.Label fullName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.OpenFileDialog openTicket;
     }
 }
 
