@@ -1,0 +1,10 @@
+C:\Users\bhara\source\repos\Coursework\Coursework\bin\Debug\Coursework.exe.config
+C:\Users\bhara\source\repos\Coursework\Coursework\bin\Debug\Coursework.exe
+C:\Users\bhara\source\repos\Coursework\Coursework\bin\Debug\Coursework.pdb
+C:\Users\bhara\source\repos\Coursework\Coursework\obj\Debug\Coursework.csproj.AssemblyReference.cache
+C:\Users\bhara\source\repos\Coursework\Coursework\obj\Debug\Coursework.Form1.resources
+C:\Users\bhara\source\repos\Coursework\Coursework\obj\Debug\Coursework.Properties.Resources.resources
+C:\Users\bhara\source\repos\Coursework\Coursework\obj\Debug\Coursework.csproj.GenerateResource.cache
+C:\Users\bhara\source\repos\Coursework\Coursework\obj\Debug\Coursework.csproj.CoreCompileInputs.cache
+C:\Users\bhara\source\repos\Coursework\Coursework\obj\Debug\Coursework.exe
+C:\Users\bhara\source\repos\Coursework\Coursework\obj\Debug\Coursework.pdb
