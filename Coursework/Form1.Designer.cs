@@ -98,18 +98,22 @@ namespace Coursework
             this.panel7 = new System.Windows.Forms.Panel();
             this.GenerateGraph = new System.Windows.Forms.Button();
             this.SortByIncome = new System.Windows.Forms.Button();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.weeklyddCmb = new System.Windows.Forms.ComboBox();
+            this.weeklymmCmb = new System.Windows.Forms.ComboBox();
+            this.weeklyyyCmb = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.ViewWeeklyVisitors = new System.Windows.Forms.Button();
             this.GenerateWeeklyReport = new System.Windows.Forms.Button();
             this.SortByVisitors = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.weeklyDataGrid = new System.Windows.Forms.DataGridView();
             this.label15 = new System.Windows.Forms.Label();
             this.AdminPanel = new System.Windows.Forms.TabPage();
             this.openTicket = new System.Windows.Forms.OpenFileDialog();
+            this.nameError = new System.Windows.Forms.Label();
+            this.emailError = new System.Windows.Forms.Label();
+            this.phoneError = new System.Windows.Forms.Label();
+            this.visitorsError = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Home.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -127,7 +131,7 @@ namespace Coursework
             ((System.ComponentModel.ISupportInitialize)(this.dailyReportGrid)).BeginInit();
             this.WeeklyReport.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weeklyDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -202,6 +206,10 @@ namespace Coursework
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.visitorsError);
+            this.panel1.Controls.Add(this.phoneError);
+            this.panel1.Controls.Add(this.emailError);
+            this.panel1.Controls.Add(this.nameError);
             this.panel1.Controls.Add(this.Register);
             this.panel1.Controls.Add(this.childrenCmb);
             this.panel1.Controls.Add(this.totalVisitorsCmb);
@@ -394,6 +402,7 @@ namespace Coursework
             this.ddCmb.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddCmb.FormattingEnabled = true;
             this.ddCmb.Items.AddRange(new object[] {
+            "01",
             "02",
             "03",
             "04",
@@ -423,7 +432,7 @@ namespace Coursework
             "29",
             "30",
             "31"});
-            this.ddCmb.Location = new System.Drawing.Point(259, 114);
+            this.ddCmb.Location = new System.Drawing.Point(305, 114);
             this.ddCmb.Name = "ddCmb";
             this.ddCmb.Size = new System.Drawing.Size(41, 27);
             this.ddCmb.TabIndex = 25;
@@ -434,6 +443,7 @@ namespace Coursework
             this.mmCmb.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mmCmb.FormattingEnabled = true;
             this.mmCmb.Items.AddRange(new object[] {
+            "01",
             "02",
             "03",
             "04",
@@ -445,7 +455,7 @@ namespace Coursework
             "10",
             "11",
             "12"});
-            this.mmCmb.Location = new System.Drawing.Point(306, 114);
+            this.mmCmb.Location = new System.Drawing.Point(258, 114);
             this.mmCmb.Name = "mmCmb";
             this.mmCmb.Size = new System.Drawing.Size(41, 27);
             this.mmCmb.TabIndex = 24;
@@ -970,6 +980,7 @@ namespace Coursework
             this.comboBox1.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
+            "01",
             "02",
             "03",
             "04",
@@ -999,7 +1010,7 @@ namespace Coursework
             "29",
             "30",
             "31"});
-            this.comboBox1.Location = new System.Drawing.Point(102, 44);
+            this.comboBox1.Location = new System.Drawing.Point(152, 44);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(41, 27);
             this.comboBox1.TabIndex = 42;
@@ -1010,6 +1021,7 @@ namespace Coursework
             this.comboBox2.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
+            "01",
             "02",
             "03",
             "04",
@@ -1021,7 +1033,7 @@ namespace Coursework
             "10",
             "11",
             "12"});
-            this.comboBox2.Location = new System.Drawing.Point(149, 44);
+            this.comboBox2.Location = new System.Drawing.Point(105, 44);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(41, 27);
             this.comboBox2.TabIndex = 41;
@@ -1066,6 +1078,7 @@ namespace Coursework
             this.GenerateDailyReport.TabIndex = 38;
             this.GenerateDailyReport.Text = "Download Report";
             this.GenerateDailyReport.UseVisualStyleBackColor = true;
+            this.GenerateDailyReport.Click += new System.EventHandler(this.GenerateDailyReport_Click);
             // 
             // VisitorsByCategory
             // 
@@ -1136,15 +1149,15 @@ namespace Coursework
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.GenerateGraph);
             this.panel7.Controls.Add(this.SortByIncome);
-            this.panel7.Controls.Add(this.comboBox4);
-            this.panel7.Controls.Add(this.comboBox5);
-            this.panel7.Controls.Add(this.comboBox6);
+            this.panel7.Controls.Add(this.weeklyddCmb);
+            this.panel7.Controls.Add(this.weeklymmCmb);
+            this.panel7.Controls.Add(this.weeklyyyCmb);
             this.panel7.Controls.Add(this.label17);
             this.panel7.Controls.Add(this.ViewWeeklyVisitors);
             this.panel7.Controls.Add(this.GenerateWeeklyReport);
             this.panel7.Controls.Add(this.SortByVisitors);
             this.panel7.Controls.Add(this.label14);
-            this.panel7.Controls.Add(this.dataGridView5);
+            this.panel7.Controls.Add(this.weeklyDataGrid);
             this.panel7.Location = new System.Drawing.Point(9, 42);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1030, 549);
@@ -1169,12 +1182,14 @@ namespace Coursework
             this.SortByIncome.TabIndex = 48;
             this.SortByIncome.Text = "Sort by Income";
             this.SortByIncome.UseVisualStyleBackColor = true;
+            this.SortByIncome.Click += new System.EventHandler(this.SortByIncome_Click);
             // 
-            // comboBox4
+            // weeklyddCmb
             // 
-            this.comboBox4.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.weeklyddCmb.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weeklyddCmb.FormattingEnabled = true;
+            this.weeklyddCmb.Items.AddRange(new object[] {
+            "01",
             "02",
             "03",
             "04",
@@ -1204,17 +1219,18 @@ namespace Coursework
             "29",
             "30",
             "31"});
-            this.comboBox4.Location = new System.Drawing.Point(211, 31);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(41, 27);
-            this.comboBox4.TabIndex = 47;
-            this.comboBox4.Text = "01";
+            this.weeklyddCmb.Location = new System.Drawing.Point(258, 31);
+            this.weeklyddCmb.Name = "weeklyddCmb";
+            this.weeklyddCmb.Size = new System.Drawing.Size(41, 27);
+            this.weeklyddCmb.TabIndex = 47;
+            this.weeklyddCmb.Text = "01";
             // 
-            // comboBox5
+            // weeklymmCmb
             // 
-            this.comboBox5.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
+            this.weeklymmCmb.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weeklymmCmb.FormattingEnabled = true;
+            this.weeklymmCmb.Items.AddRange(new object[] {
+            "01",
             "02",
             "03",
             "04",
@@ -1226,17 +1242,17 @@ namespace Coursework
             "10",
             "11",
             "12"});
-            this.comboBox5.Location = new System.Drawing.Point(258, 31);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(41, 27);
-            this.comboBox5.TabIndex = 46;
-            this.comboBox5.Text = "01";
+            this.weeklymmCmb.Location = new System.Drawing.Point(211, 31);
+            this.weeklymmCmb.Name = "weeklymmCmb";
+            this.weeklymmCmb.Size = new System.Drawing.Size(41, 27);
+            this.weeklymmCmb.TabIndex = 46;
+            this.weeklymmCmb.Text = "01";
             // 
-            // comboBox6
+            // weeklyyyCmb
             // 
-            this.comboBox6.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Items.AddRange(new object[] {
+            this.weeklyyyCmb.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weeklyyyCmb.FormattingEnabled = true;
+            this.weeklyyyCmb.Items.AddRange(new object[] {
             "2021",
             "2023",
             "2024",
@@ -1246,11 +1262,11 @@ namespace Coursework
             "2028",
             "2029",
             "2030"});
-            this.comboBox6.Location = new System.Drawing.Point(305, 31);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(77, 27);
-            this.comboBox6.TabIndex = 45;
-            this.comboBox6.Text = "2022";
+            this.weeklyyyCmb.Location = new System.Drawing.Point(305, 31);
+            this.weeklyyyCmb.Name = "weeklyyyCmb";
+            this.weeklyyyCmb.Size = new System.Drawing.Size(77, 27);
+            this.weeklyyyCmb.TabIndex = 45;
+            this.weeklyyyCmb.Text = "2022";
             // 
             // label17
             // 
@@ -1271,6 +1287,7 @@ namespace Coursework
             this.ViewWeeklyVisitors.TabIndex = 43;
             this.ViewWeeklyVisitors.Text = "View All Visitors ";
             this.ViewWeeklyVisitors.UseVisualStyleBackColor = true;
+            this.ViewWeeklyVisitors.Click += new System.EventHandler(this.ViewWeeklyVisitors_Click);
             // 
             // GenerateWeeklyReport
             // 
@@ -1291,6 +1308,7 @@ namespace Coursework
             this.SortByVisitors.TabIndex = 40;
             this.SortByVisitors.Text = "Sort by Visitors";
             this.SortByVisitors.UseVisualStyleBackColor = true;
+            this.SortByVisitors.Click += new System.EventHandler(this.SortByVisitors_Click);
             // 
             // label14
             // 
@@ -1302,14 +1320,14 @@ namespace Coursework
             this.label14.TabIndex = 4;
             this.label14.Text = "Weekly Report";
             // 
-            // dataGridView5
+            // weeklyDataGrid
             // 
-            this.dataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Location = new System.Drawing.Point(8, 86);
-            this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.Size = new System.Drawing.Size(1006, 333);
-            this.dataGridView5.TabIndex = 0;
+            this.weeklyDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.weeklyDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.weeklyDataGrid.Location = new System.Drawing.Point(8, 86);
+            this.weeklyDataGrid.Name = "weeklyDataGrid";
+            this.weeklyDataGrid.Size = new System.Drawing.Size(1006, 333);
+            this.weeklyDataGrid.TabIndex = 0;
             // 
             // label15
             // 
@@ -1334,6 +1352,54 @@ namespace Coursework
             // openTicket
             // 
             this.openTicket.FileName = "openTicket";
+            // 
+            // nameError
+            // 
+            this.nameError.AutoSize = true;
+            this.nameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameError.ForeColor = System.Drawing.Color.Red;
+            this.nameError.Location = new System.Drawing.Point(158, 35);
+            this.nameError.Name = "nameError";
+            this.nameError.Size = new System.Drawing.Size(130, 13);
+            this.nameError.TabIndex = 31;
+            this.nameError.Text = "at least 2 characters long*";
+            this.nameError.Visible = false;
+            // 
+            // emailError
+            // 
+            this.emailError.AutoSize = true;
+            this.emailError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailError.ForeColor = System.Drawing.Color.Red;
+            this.emailError.Location = new System.Drawing.Point(533, 35);
+            this.emailError.Name = "emailError";
+            this.emailError.Size = new System.Drawing.Size(101, 13);
+            this.emailError.TabIndex = 32;
+            this.emailError.Text = "invalid Email format*";
+            this.emailError.Visible = false;
+            // 
+            // phoneError
+            // 
+            this.phoneError.AutoSize = true;
+            this.phoneError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phoneError.ForeColor = System.Drawing.Color.Red;
+            this.phoneError.Location = new System.Drawing.Point(875, 35);
+            this.phoneError.Name = "phoneError";
+            this.phoneError.Size = new System.Drawing.Size(112, 13);
+            this.phoneError.TabIndex = 33;
+            this.phoneError.Text = "only numbers allowed*";
+            this.phoneError.Visible = false;
+            // 
+            // visitorsError
+            // 
+            this.visitorsError.AutoSize = true;
+            this.visitorsError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.visitorsError.ForeColor = System.Drawing.Color.Red;
+            this.visitorsError.Location = new System.Drawing.Point(687, 97);
+            this.visitorsError.Name = "visitorsError";
+            this.visitorsError.Size = new System.Drawing.Size(107, 13);
+            this.visitorsError.TabIndex = 34;
+            this.visitorsError.Text = "choose no. of visitors";
+            this.visitorsError.Visible = false;
             // 
             // Form1
             // 
@@ -1372,7 +1438,7 @@ namespace Coursework
             this.WeeklyReport.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weeklyDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1421,7 +1487,7 @@ namespace Coursework
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button GenerateDailyReport;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.DataGridView dataGridView5;
+        private System.Windows.Forms.DataGridView weeklyDataGrid;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button GenerateWeeklyReport;
         private System.Windows.Forms.Button SortByVisitors;
@@ -1429,9 +1495,9 @@ namespace Coursework
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox weeklyddCmb;
+        private System.Windows.Forms.ComboBox weeklymmCmb;
+        private System.Windows.Forms.ComboBox weeklyyyCmb;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button ViewWeeklyVisitors;
         private System.Windows.Forms.Button GenerateGraph;
@@ -1460,6 +1526,10 @@ namespace Coursework
         private System.Windows.Forms.Label fullName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.OpenFileDialog openTicket;
+        private System.Windows.Forms.Label nameError;
+        private System.Windows.Forms.Label phoneError;
+        private System.Windows.Forms.Label emailError;
+        private System.Windows.Forms.Label visitorsError;
     }
 }
 

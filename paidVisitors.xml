@@ -1,91 +1,36 @@
 <?xml version="1.0"?>
 <ArrayOfCheckedoutVisitors xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <CheckedoutVisitors>
-    <fullname>dfasdf</fullname>
-    <email>dfasdf</email>
-    <phone>321</phone>
-    <category>Group of 10</category>
-    <inDateTime>2022-01-01T10:00:00</inDateTime>
-    <totalVisitors>13</totalVisitors>
-    <totalChildren>13</totalChildren>
-    <outDateTime>2021-12-31T11:00:00</outDateTime>
-    <paid>3300</paid>
-  </CheckedoutVisitors>
-  <CheckedoutVisitors>
     <fullname>Bharat</fullname>
     <email>Bharat</email>
-    <phone>125</phone>
+    <phone>142</phone>
+    <category>Adult</category>
+    <inDateTime>2022-01-01T11:00:00</inDateTime>
+    <totalVisitors>3</totalVisitors>
+    <totalChildren>0</totalChildren>
+    <outDateTime>2021-12-31T13:00:00</outDateTime>
+    <paid>3000</paid>
+  </CheckedoutVisitors>
+  <CheckedoutVisitors>
+    <fullname>Gharti</fullname>
+    <email>Gharti</email>
+    <phone>558</phone>
     <category>Child</category>
-    <inDateTime>2022-01-01T10:00:00</inDateTime>
-    <totalVisitors>6</totalVisitors>
-    <totalChildren>6</totalChildren>
-    <outDateTime>2021-12-31T11:00:00</outDateTime>
-    <paid>400</paid>
+    <inDateTime>2022-01-02T11:00:00</inDateTime>
+    <totalVisitors>3</totalVisitors>
+    <totalChildren>0</totalChildren>
+    <outDateTime>2021-12-31T13:00:00</outDateTime>
+    <paid>2100</paid>
   </CheckedoutVisitors>
   <CheckedoutVisitors>
-    <fullname>Bharat</fullname>
-    <email>Bharat</email>
-    <phone>123</phone>
-    <category>Child</category>
-    <inDateTime>2022-01-01T10:00:00</inDateTime>
-    <totalVisitors>6</totalVisitors>
-    <totalChildren>6</totalChildren>
-    <outDateTime>2021-12-31T11:00:00</outDateTime>
-    <paid>400</paid>
-  </CheckedoutVisitors>
-  <CheckedoutVisitors>
-    <fullname>Bharat</fullname>
-    <email>Bharat</email>
-    <phone>123</phone>
-    <category>Child</category>
-    <inDateTime>2022-01-01T10:00:00</inDateTime>
-    <totalVisitors>6</totalVisitors>
-    <totalChildren>6</totalChildren>
-    <outDateTime>2021-12-31T11:00:00</outDateTime>
-    <paid>400</paid>
-  </CheckedoutVisitors>
-  <CheckedoutVisitors>
-    <fullname>Bharat</fullname>
-    <email>Bharat</email>
-    <phone>123</phone>
-    <category>Child</category>
-    <inDateTime>2022-01-01T10:00:00</inDateTime>
-    <totalVisitors>6</totalVisitors>
-    <totalChildren>6</totalChildren>
-    <outDateTime>2021-12-31T11:00:00</outDateTime>
-    <paid>400</paid>
-  </CheckedoutVisitors>
-  <CheckedoutVisitors>
-    <fullname>Bharat</fullname>
-    <email>Bharat</email>
-    <phone>123</phone>
-    <category>Child</category>
-    <inDateTime>2022-01-01T10:00:00</inDateTime>
-    <totalVisitors>6</totalVisitors>
-    <totalChildren>6</totalChildren>
-    <outDateTime>2021-12-31T11:00:00</outDateTime>
-    <paid>400</paid>
-  </CheckedoutVisitors>
-  <CheckedoutVisitors>
-    <fullname>Bharat</fullname>
-    <email>Bharat</email>
-    <phone>123</phone>
-    <category>Child</category>
-    <inDateTime>2022-01-01T10:00:00</inDateTime>
-    <totalVisitors>6</totalVisitors>
-    <totalChildren>6</totalChildren>
-    <outDateTime>2021-12-31T11:00:00</outDateTime>
-    <paid>400</paid>
-  </CheckedoutVisitors>
-  <CheckedoutVisitors>
-    <fullname>Bharat</fullname>
-    <email>Bharat</email>
-    <phone>98</phone>
+    <fullname>Ujjwal</fullname>
+    <email>Ujjwal</email>
+    <phone>1235</phone>
     <category>Adult</category>
     <inDateTime>2022-01-01T10:00:00</inDateTime>
-    <totalVisitors>6</totalVisitors>
-    <totalChildren>6</totalChildren>
+    <totalVisitors>3</totalVisitors>
+    <totalChildren>0</totalChildren>
     <outDateTime>2021-12-31T11:00:00</outDateTime>
-    <paid>550</paid>
+    <paid>1650</paid>
   </CheckedoutVisitors>
 </ArrayOfCheckedoutVisitors>

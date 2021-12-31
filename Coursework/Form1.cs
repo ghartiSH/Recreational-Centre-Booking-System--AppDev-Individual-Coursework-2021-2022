@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -33,112 +34,113 @@ namespace Coursework
             checkedoutVisitors = new List<CheckedoutVisitors>();
             
             LoadTicket();
-            ///LoadXml();
+            LoadXml();
+            LoadCheckedVisitorsXML();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/paidVisitors.xml", FileMode.Open, FileAccess.Read);
-         
-            checkedoutVisitors = (List<CheckedoutVisitors>)paidSerializer.Deserialize(file);
-
-            dailyReportGrid.DataSource = checkedoutVisitors;
-            file.Close();
-        }
+        
 
         private void Register_Click(object sender, EventArgs e)
         {
-            Visitors vs = new Visitors();
-            FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/visitors.xml", FileMode.Create, FileAccess.Write);
-            vs.fullname = fullNameTxt.Text;
-            vs.email = emailTxt.Text;
-            vs.phone = phoneTxt.Text;
-            vs.category = categoryCmb.Text;
-            vs.inDateTime = DateTime.Parse(ddCmb.Text + "-" + mmCmb.Text + "-" + yyCmb.Text + " " + hhCmb.Text + ":" + minCmb.Text);
-            vs.totalVisitors = int.Parse(totalVisitorsCmb.Text);
-            vs.totalChildren = int.Parse(totalVisitorsCmb.Text);
+            try
+            {
+                Visitors vs = new Visitors();
+                FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/visitors.xml", FileMode.Create, FileAccess.Write);
 
-            visitors.Add(vs);
+                vs.fullname = fullNameTxt.Text;
+                vs.email = emailTxt.Text;
+                vs.phone = phoneTxt.Text;
+                vs.category = categoryCmb.Text;
+                vs.inDateTime = DateTime.Parse(mmCmb.Text + "-" + ddCmb.Text + "-" + yyCmb.Text + " " + hhCmb.Text + ":" + minCmb.Text);
+                vs.totalVisitors = int.Parse(totalVisitorsCmb.Text);
+                vs.totalChildren = int.Parse(childrenCmb.Text);
 
-            xmlSerializer.Serialize(file, visitors);
-            file.Close();
-        }
+                var isEmail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+                var isValidEmail = isEmail.IsMatch(vs.email);
 
-        private void clear()
-        {
-            fullNameTxt.Text = "";
-            
-        }
+                var hasNumber = new Regex("^[0-9]+$");
+                var isValidNumber = hasNumber.IsMatch(vs.phone);
 
-        private void ViewCurrentVisitors_Click(object sender, EventArgs e)
-        {
-            try{
-                FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/visitors.xml", FileMode.Open, FileAccess.Read);
-                visitors = (List<Visitors>)xmlSerializer.Deserialize(file);
+                if (vs.fullname.Length > 2)
+                {
+                    nameError.Visible = false;
+                    if (isValidEmail)
+                    {
+                        emailError.Visible = false;
+                        if (isValidNumber)
+                        {
+                            phoneError.Visible = false;
+                            if (vs.totalVisitors > 0)
+                            {
+                                visitorsError.Visible = false;
+                                phoneError.Visible = false;
+                                visitors.Add(vs);
+                                xmlSerializer.Serialize(file, visitors);
+                                MessageBox.Show("Visitor added Successfylly..!");
+                            }
+                            else
+                            {
+                                visitorsError.Visible = true;
 
-                visitorListGrid.DataSource = visitors;
+                            }
+                        }
+                        else
+                        {
+                            phoneError.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        emailError.Visible = true;
+                    }
+                }
+                else
+                {
+                    nameError.Visible = true;
+                }
                 file.Close();
             }
             catch
             {
-                MessageBox.Show("No records Stored");
+                MessageBox.Show("File Error.. Delete the visitors.xml and try again");
             }
+        }
+
+        
+
+        private void ViewCurrentVisitors_Click(object sender, EventArgs e)
+        {
+            List<Visitors> vis = new List<Visitors>();
+            vis = ReadVisitors();
+
+            visitorListGrid.DataSource = vis;
         }
 
         private void LoadTicket()
         {
-            try
-            {
-
-                DataTable dt = new DataTable();
-                string[] lines = System.IO.File.ReadAllLines("C:/Users/bhara/source/repos/Coursework/ticket.csv");
-                if (lines.Length > 0)
-                {
-                    string firstLine = lines[0];
-                    string[] headerLabels = firstLine.Split(',');
-                    foreach (string headerword in headerLabels)
-                    {
-                        dt.Columns.Add(new DataColumn(headerword));
-                    }
-                    for (int i = 1; i < lines.Length; i++)
-                    {
-                        string[] dataWords = lines[i].Split(',');
-                        DataRow dr = dt.NewRow();
-                        int columnIndex = 0;
-                        foreach (string headerWord in headerLabels)
-                        {
-                            dr[headerWord] = dataWords[columnIndex++];
-
-                        }
-                        dt.Rows.Add(dr);
-                    }
-                }
-                if (dt.Rows.Count > 0)
-                {
-                    ticketGrid.DataSource = dt;
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Ticket File not Found");
-            }
+           
+            DataTable dt = new DataTable();
+            dt = GetTicket();
+            ticketGrid.DataSource = dt; 
         }
 
         private void LoadXml()
         {
-            try
-            {
-                FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/visitors.xml", FileMode.Open, FileAccess.Read);
-                visitors = (List<Visitors>)xmlSerializer.Deserialize(file);
+            List<Visitors> vis = new List<Visitors>();
+            vis = ReadVisitors();
 
-                visitorListGrid.DataSource = visitors;
-                file.Close();
-            }
-            catch
-            {
-                MessageBox.Show("No records Stored");
-            }
+            visitorListGrid.DataSource = vis;
         }
+
+
+        private void LoadCheckedVisitorsXML()
+        {
+            List<CheckedoutVisitors> chvis = new List<CheckedoutVisitors>();
+            chvis = GetCheckedoutVisitors();
+
+            dailyReportGrid.DataSource = chvis;
+        }
+        
 
         private void Find_Click(object sender, EventArgs e)
         {
@@ -253,25 +255,33 @@ namespace Coursework
             billTxt.Text = totalBill.ToString();
         }
 
+        private void button3_Click(object sender, EventArgs e) //viewing checked out visitors button
+        {
+            List<CheckedoutVisitors> vis = new List<CheckedoutVisitors>();
+
+            vis = GetCheckedoutVisitors();
+
+            dailyReportGrid.DataSource = vis;
+        }
+
         private List<Visitors> FindVisitors()
         {
             List<Visitors> matchList = new List<Visitors>();
             try
             {
-                FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/visitors.xml", FileMode.Open, FileAccess.Read);
-                visitors = (List<Visitors>)xmlSerializer.Deserialize(file);
+                List<Visitors> vis = new List<Visitors>();
+                vis = ReadVisitors();
 
 
                 string phone = searchPhoneTxt.Text;
 
-                foreach (var visitor in visitors)
+                foreach (var visitor in vis)
                 {
                     if (visitor.phone == phone)
                     {
                         matchList.Add(visitor);
                     }
                 }
-                file.Close();
 
             }
             catch
@@ -282,50 +292,25 @@ namespace Coursework
 
         }
 
-        private DataTable GetTicket()
-        {
-            DataTable dt = new DataTable();
-            string[] lines = System.IO.File.ReadAllLines("C:/Users/bhara/source/repos/Coursework/ticket.csv");
-            if (lines.Length > 0)
-            {
-                string firstLine = lines[0];
-                string[] headerLabels = firstLine.Split(',');
-                foreach (string headerword in headerLabels)
-                {
-                    dt.Columns.Add(new DataColumn(headerword));
-                }
-                for (int i = 1; i < lines.Length; i++)
-                {
-                    string[] dataWords = lines[i].Split(',');
-                    DataRow dr = dt.NewRow();
-                    int columnIndex = 0;
-                    foreach (string headerWord in headerLabels)
-                    {
-                        dr[headerWord] = dataWords[columnIndex++];
-
-                    }
-                    dt.Rows.Add(dr);
-                }
-            }
-            return dt;
-        }
+        
 
         private void Checkout_Click(object sender, EventArgs e)
         {
 
             FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/paidVisitors.xml", FileMode.Create, FileAccess.Write);
-
-     
             paidSerializer.Serialize(file, checkedoutVisitors);
             file.Close();
+
+            MessageBox.Show("Visitor Checked out successfully..");
             
         }
 
 
         private void VisitorsByCategory_Click(object sender, EventArgs e)
         {
-            FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/paidVisitors.xml", FileMode.Open, FileAccess.Read);
-            checkedoutVisitors = (List<CheckedoutVisitors>)paidSerializer.Deserialize(file);
+            List<CheckedoutVisitors> vis = new List<CheckedoutVisitors>();
+
+            vis = GetCheckedoutVisitors();
 
             int childTotal = 0;
             int adultTotal = 0;
@@ -333,7 +318,7 @@ namespace Coursework
             int groupTenTotal = 0;
             int groupFifteenTotal = 0;
 
-            foreach (var cv in checkedoutVisitors)
+            foreach (var cv in vis)
             {
                 switch (cv.category)
                 {
@@ -363,7 +348,237 @@ namespace Coursework
             dr.Add(new DailyReport { category = "Group of 15", noOfVisitors = groupFifteenTotal });
 
             dailyReportGrid.DataSource = dr;
-            file.Close();
+        }
+
+        public List<CheckedoutVisitors> GetCheckedoutVisitors()
+        {
+            try
+            {
+                FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/paidVisitors.xml", FileMode.Open, FileAccess.Read);
+                checkedoutVisitors = (List<CheckedoutVisitors>)paidSerializer.Deserialize(file);
+                file.Close();
+            }
+            catch
+            {
+                MessageBox.Show("File not Found.. \n Don't worry its not a problem :D");
+            }
+            return checkedoutVisitors;
+        }
+
+        private List<Visitors> ReadVisitors()
+        {
+            try
+            {
+                FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/visitors.xml", FileMode.Open, FileAccess.Read);
+                visitors = (List<Visitors>)xmlSerializer.Deserialize(file);
+                visitorListGrid.DataSource = visitors;
+                file.Close();
+            }
+            catch
+            {
+                MessageBox.Show("No records Stored");
+            }
+            return visitors;
+        }
+
+        private DataTable GetTicket()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+
+                string[] lines = System.IO.File.ReadAllLines("C:/Users/bhara/source/repos/Coursework/ticket.csv");
+                if (lines.Length > 0)
+                {
+                    string firstLine = lines[0];
+                    string[] headerLabels = firstLine.Split(',');
+                    foreach (string headerword in headerLabels)
+                    {
+                        dt.Columns.Add(new DataColumn(headerword));
+                    }
+                    for (int i = 1; i < lines.Length; i++)
+                    {
+                        string[] dataWords = lines[i].Split(',');
+                        DataRow dr = dt.NewRow();
+                        int columnIndex = 0;
+                        foreach (string headerWord in headerLabels)
+                        {
+                            dr[headerWord] = dataWords[columnIndex++];
+
+                        }
+                        dt.Rows.Add(dr);
+                    }
+                }
+
+            }
+
+            catch
+            {
+                MessageBox.Show("Ticket File not found");
+            }
+            return dt;
+
+        }
+
+        private void clear()
+        {
+            fullNameTxt.Text = "";
+
+        }
+
+        private void CreateCSV(string path, DataGridView dg)
+        {
+            string csv = string.Empty;
+
+            foreach(DataGridViewColumn coln in dg.Columns)
+            {
+                csv  += coln.HeaderText + ',';
+            }
+
+            csv += "\r\n";
+
+            foreach (DataGridViewRow row in dg.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    csv += cell.Value.ToString().Replace(",",",") + ',';
+                }
+
+                csv += "\r\n";
+
+            }
+
+            File.WriteAllText(path, csv);
+        }
+
+        private void GenerateDailyReport_Click(object sender, EventArgs e)
+        {
+            string path = "C:/Users/bhara/source/repos/Coursework/DailyReport.csv";
+
+            CreateCSV(path, dailyReportGrid);
+            MessageBox.Show("CSV report generated Successfully");
+        }
+
+        private void bubbleSort()
+        {
+            int[] array = { 15, 8, 7, 6, 2, 1, 89, 54, 12 };
+            int temp;
+
+            for (int i=0; i<array.Length-1; i++)
+            {
+                for (int j=0; j<array.Length-1; j++ )
+                {
+                    if (array[j] > array[j + 1])
+                    {
+                        temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                    }
+                       
+                }
+            }
+        }
+
+        private void SortByVisitors_Click(object sender, EventArgs e)
+        {
+            bubbleSort();
+        }
+
+        private void ViewWeeklyVisitors_Click(object sender, EventArgs e)
+        {
+           List <WeeklyReport> wrObj = new List <WeeklyReport>();
+
+            wrObj = GetWeeklyReport();
+            weeklyDataGrid.DataSource = wrObj;
+           
+        }
+
+        private List<WeeklyReport> GetWeeklyReport()
+        {
+            List<CheckedoutVisitors> vis = new List<CheckedoutVisitors>();
+            vis = GetCheckedoutVisitors();
+
+            int sundayVisitors = 0;
+            int sundayIncome = 0;
+            int mondayVisitors = 0;
+            int mondayIncome = 0;
+            int tuesdayVisitors = 0;
+            int tuesdayIncome = 0;
+            int wednesdayVisitors = 0;
+            int wednesdayIncome = 0;
+            int thursdayVisitors = 0;
+            int thursdayIncome = 0;
+            int fridayIncome = 0;
+            int fridayVisitors = 0;
+            int saturdayVisitors = 0;
+            int saturdayIncome = 0;
+
+
+            DateTime startDate = DateTime.Parse(weeklymmCmb.Text  + "-" + weeklyddCmb.Text + "-" + weeklyyyCmb.Text);
+            var dayOnly = startDate.Day;
+            foreach (var item in vis)
+            {
+
+
+                var visitorsDate = item.inDateTime.Day;
+
+                if (dayOnly == visitorsDate)
+                {
+                    sundayVisitors = sundayVisitors + 1;
+                    sundayIncome = sundayIncome + item.paid;
+                }
+                else if (visitorsDate == (dayOnly+1))
+                {
+                    mondayVisitors = mondayVisitors + 1;
+                    mondayIncome = mondayIncome + item.paid;
+
+                }
+                else if (visitorsDate == (dayOnly+2))
+                {
+                    tuesdayIncome = tuesdayIncome + item.paid;
+                    tuesdayVisitors += 1;
+                }
+                else if (visitorsDate == (dayOnly+3))
+                {
+                    wednesdayIncome += item.paid;
+                    wednesdayVisitors += 1;
+
+                }
+
+                else if (visitorsDate == (dayOnly + 4))
+                {
+                    thursdayIncome += item.paid;
+                    thursdayVisitors += 1;
+
+
+                }
+                else if (visitorsDate == (dayOnly +5))
+                {
+                    fridayVisitors += 1;
+                    fridayIncome += item.paid;
+                }
+                else if (visitorsDate == (dayOnly+6))
+                {
+                    saturdayVisitors += 1;
+                    saturdayIncome += item.paid;
+                }
+            }
+            List<WeeklyReport> wr = new List<WeeklyReport>();
+            wr.Add(new WeeklyReport { day = "Sunday", visitors = sundayVisitors, income = sundayIncome });
+            wr.Add(new WeeklyReport { day = "Monday", visitors = mondayVisitors, income = mondayIncome });
+            wr.Add(new WeeklyReport { day = "Tuesday", visitors = tuesdayVisitors, income = tuesdayIncome });
+            wr.Add(new WeeklyReport { day = "Wednesday", visitors = wednesdayVisitors, income = wednesdayIncome });
+            wr.Add(new WeeklyReport { day = "Thursday", visitors = thursdayVisitors, income = thursdayIncome });
+            wr.Add(new WeeklyReport { day = "Friday", visitors = fridayVisitors, income = fridayIncome });
+            wr.Add(new WeeklyReport { day = "Saturday", visitors = saturdayVisitors, income = saturdayIncome });
+
+            return wr;
+
+        }
+
+        private void SortByIncome_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
