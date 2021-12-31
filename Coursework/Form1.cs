@@ -18,18 +18,32 @@ namespace Coursework
     {
         XmlSerializer xmlSerializer;
         List<Visitors> visitors;
+        XmlSerializer paidSerializer;
+        List<CheckedoutVisitors> checkedoutVisitors;
+
+
+        
         public Form1()
         {
             InitializeComponent();
             xmlSerializer = new XmlSerializer(typeof(List<Visitors>));
             visitors = new List<Visitors>();
+
+            paidSerializer = new XmlSerializer(typeof(List<CheckedoutVisitors>));
+            checkedoutVisitors = new List<CheckedoutVisitors>();
+            
             LoadTicket();
-            LoadXml();
+            ///LoadXml();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/paidVisitors.xml", FileMode.Open, FileAccess.Read);
+         
+            checkedoutVisitors = (List<CheckedoutVisitors>)paidSerializer.Deserialize(file);
 
+            dailyReportGrid.DataSource = checkedoutVisitors;
+            file.Close();
         }
 
         private void Register_Click(object sender, EventArgs e)
@@ -134,12 +148,14 @@ namespace Coursework
               
         }
 
+        
         private void Calculate_Click(object sender, EventArgs e)
         {
             List<Visitors> matchList = FindVisitors();
             DataTable dt = GetTicket();
             ArrayList arr = new ArrayList();
             int totalBill=0;
+            CheckedoutVisitors cv = new CheckedoutVisitors();
 
             foreach (DataRow row in dt.Rows)
             {
@@ -218,10 +234,23 @@ namespace Coursework
                     
                 }
                 message.Text = "Hello " + visitor.fullname + " !!!... You've played for " + result + " hours.";
+
+                cv.fullname = visitor.fullname;
+                cv.email = visitor.fullname;
+                cv.phone = visitor.phone;
+                cv.category = visitor.category;
+                cv.inDateTime = visitor.inDateTime;
+                cv.totalVisitors = visitor.totalVisitors;
+                cv.totalChildren = visitor.totalChildren;
+                cv.outDateTime = DateTime.Parse(outHHCmb.Text + ":" + outMinCmb.Text);
+                cv.paid = totalBill;
+
+                checkedoutVisitors.Add(cv);
+
+
             }
             
             billTxt.Text = totalBill.ToString();
-            
         }
 
         private List<Visitors> FindVisitors()
@@ -279,6 +308,62 @@ namespace Coursework
                 }
             }
             return dt;
+        }
+
+        private void Checkout_Click(object sender, EventArgs e)
+        {
+
+            FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/paidVisitors.xml", FileMode.Create, FileAccess.Write);
+
+     
+            paidSerializer.Serialize(file, checkedoutVisitors);
+            file.Close();
+            
+        }
+
+
+        private void VisitorsByCategory_Click(object sender, EventArgs e)
+        {
+            FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/paidVisitors.xml", FileMode.Open, FileAccess.Read);
+            checkedoutVisitors = (List<CheckedoutVisitors>)paidSerializer.Deserialize(file);
+
+            int childTotal = 0;
+            int adultTotal = 0;
+            int groupFiveTotal = 0;
+            int groupTenTotal = 0;
+            int groupFifteenTotal = 0;
+
+            foreach (var cv in checkedoutVisitors)
+            {
+                switch (cv.category)
+                {
+                    case "Child":
+                        childTotal = childTotal + 1;
+                        break;
+                    case "Adult":
+                        adultTotal = adultTotal + 1;
+                        break;
+                    case "Group of 5":
+                        groupFiveTotal = groupFiveTotal + 1;
+                        break;
+                    case "Group of 10":
+                        groupTenTotal = groupTenTotal + 1;
+                        break;
+                    case "Group of 15":
+                        groupFifteenTotal = groupFifteenTotal + 1;
+                        break;
+                }
+
+            }
+            List<DailyReport> dr = new List<DailyReport>();
+            dr.Add(new DailyReport { category = "Child", noOfVisitors = childTotal });
+            dr.Add(new DailyReport { category = "Adult", noOfVisitors = adultTotal });
+            dr.Add(new DailyReport { category = "Group of 5", noOfVisitors = groupFiveTotal });
+            dr.Add(new DailyReport { category = "Froup of 10", noOfVisitors = groupTenTotal });
+            dr.Add(new DailyReport { category = "Group of 15", noOfVisitors = groupFifteenTotal });
+
+            dailyReportGrid.DataSource = dr;
+            file.Close();
         }
     }
 }

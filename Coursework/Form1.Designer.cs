@@ -60,7 +60,6 @@ namespace Coursework
             this.VisitorsList = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.ViewCurrentVisitors = new System.Windows.Forms.Button();
-            this.ViewPastVisitors = new System.Windows.Forms.Button();
             this.visitorListGrid = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -92,7 +91,7 @@ namespace Coursework
             this.GenerateDailyReport = new System.Windows.Forms.Button();
             this.VisitorsByCategory = new System.Windows.Forms.Button();
             this.ViewDailyVisitors = new System.Windows.Forms.Button();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.dailyReportGrid = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.WeeklyReport = new System.Windows.Forms.TabPage();
@@ -125,7 +124,7 @@ namespace Coursework
             this.panel5.SuspendLayout();
             this.DailyReport.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dailyReportGrid)).BeginInit();
             this.WeeklyReport.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
@@ -621,7 +620,6 @@ namespace Coursework
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.ViewCurrentVisitors);
-            this.panel3.Controls.Add(this.ViewPastVisitors);
             this.panel3.Controls.Add(this.visitorListGrid);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Location = new System.Drawing.Point(9, 45);
@@ -632,23 +630,13 @@ namespace Coursework
             // ViewCurrentVisitors
             // 
             this.ViewCurrentVisitors.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewCurrentVisitors.Location = new System.Drawing.Point(179, 485);
+            this.ViewCurrentVisitors.Location = new System.Drawing.Point(371, 483);
             this.ViewCurrentVisitors.Name = "ViewCurrentVisitors";
             this.ViewCurrentVisitors.Size = new System.Drawing.Size(284, 48);
             this.ViewCurrentVisitors.TabIndex = 33;
             this.ViewCurrentVisitors.Text = "View Current Visitors";
             this.ViewCurrentVisitors.UseVisualStyleBackColor = true;
             this.ViewCurrentVisitors.Click += new System.EventHandler(this.ViewCurrentVisitors_Click);
-            // 
-            // ViewPastVisitors
-            // 
-            this.ViewPastVisitors.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewPastVisitors.Location = new System.Drawing.Point(559, 485);
-            this.ViewPastVisitors.Name = "ViewPastVisitors";
-            this.ViewPastVisitors.Size = new System.Drawing.Size(274, 48);
-            this.ViewPastVisitors.TabIndex = 32;
-            this.ViewPastVisitors.Text = "View Past Visitors";
-            this.ViewPastVisitors.UseVisualStyleBackColor = true;
             // 
             // visitorListGrid
             // 
@@ -733,6 +721,7 @@ namespace Coursework
             this.Checkout.TabIndex = 35;
             this.Checkout.Text = "Checkout Visistor";
             this.Checkout.UseVisualStyleBackColor = true;
+            this.Checkout.Click += new System.EventHandler(this.Checkout_Click);
             // 
             // paidBillTxt
             // 
@@ -969,7 +958,7 @@ namespace Coursework
             this.panel6.Controls.Add(this.GenerateDailyReport);
             this.panel6.Controls.Add(this.VisitorsByCategory);
             this.panel6.Controls.Add(this.ViewDailyVisitors);
-            this.panel6.Controls.Add(this.dataGridView4);
+            this.panel6.Controls.Add(this.dailyReportGrid);
             this.panel6.Controls.Add(this.label13);
             this.panel6.Location = new System.Drawing.Point(9, 42);
             this.panel6.Name = "panel6";
@@ -1087,6 +1076,7 @@ namespace Coursework
             this.VisitorsByCategory.TabIndex = 37;
             this.VisitorsByCategory.Text = "View Visitors By Category";
             this.VisitorsByCategory.UseVisualStyleBackColor = true;
+            this.VisitorsByCategory.Click += new System.EventHandler(this.VisitorsByCategory_Click);
             // 
             // ViewDailyVisitors
             // 
@@ -1099,14 +1089,14 @@ namespace Coursework
             this.ViewDailyVisitors.UseVisualStyleBackColor = true;
             this.ViewDailyVisitors.Click += new System.EventHandler(this.button3_Click);
             // 
-            // dataGridView4
+            // dailyReportGrid
             // 
-            this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(8, 95);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(1012, 343);
-            this.dataGridView4.TabIndex = 4;
+            this.dailyReportGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dailyReportGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dailyReportGrid.Location = new System.Drawing.Point(8, 95);
+            this.dailyReportGrid.Name = "dailyReportGrid";
+            this.dailyReportGrid.Size = new System.Drawing.Size(1012, 343);
+            this.dailyReportGrid.TabIndex = 4;
             // 
             // label13
             // 
@@ -1377,7 +1367,7 @@ namespace Coursework
             this.DailyReport.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dailyReportGrid)).EndInit();
             this.WeeklyReport.ResumeLayout(false);
             this.WeeklyReport.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -1404,7 +1394,6 @@ namespace Coursework
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView visitorListGrid;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button ViewPastVisitors;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -1426,7 +1415,7 @@ namespace Coursework
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button ViewDailyVisitors;
-        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridView dailyReportGrid;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button VisitorsByCategory;
         private System.Windows.Forms.Label label15;
