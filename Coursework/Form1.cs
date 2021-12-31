@@ -102,7 +102,7 @@ namespace Coursework
             }
             catch
             {
-                MessageBox.Show("File Error.. Delete the visitors.xml and try again");
+                MessageBox.Show("File Error!!!...Delete the visitors.xml file and try again. \nCAUTION: Do not perform other actions in the file while wrriting in the file!!!");
             }
         }
 
@@ -296,12 +296,21 @@ namespace Coursework
 
         private void Checkout_Click(object sender, EventArgs e)
         {
+            var hasNumber = new Regex("^[0-9]+$");
+            var isValidNumber = hasNumber.IsMatch(paidBillTxt.Text);
 
-            FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/paidVisitors.xml", FileMode.Create, FileAccess.Write);
-            paidSerializer.Serialize(file, checkedoutVisitors);
-            file.Close();
-
-            MessageBox.Show("Visitor Checked out successfully..");
+            if (isValidNumber)
+            {
+                FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/paidVisitors.xml", FileMode.Create, FileAccess.Write);
+                paidSerializer.Serialize(file, checkedoutVisitors);
+                file.Close();
+                MessageBox.Show("Visitor Checked out successfully..");
+                billError.Visible = false;
+            }
+            else
+            {
+                billError.Visible = true;
+            }
             
         }
 
@@ -360,7 +369,7 @@ namespace Coursework
             }
             catch
             {
-                MessageBox.Show("File not Found.. \n Don't worry its not a problem :D");
+                MessageBox.Show("File not Found.. \npaidVisitors.xml file not found..");
             }
             return checkedoutVisitors;
         }
@@ -376,7 +385,7 @@ namespace Coursework
             }
             catch
             {
-                MessageBox.Show("No records Stored");
+                MessageBox.Show("No records Stored.. \nvisitors.xml file not found");
             }
             return visitors;
         }
@@ -515,62 +524,62 @@ namespace Coursework
 
 
             DateTime startDate = DateTime.Parse(weeklymmCmb.Text  + "-" + weeklyddCmb.Text + "-" + weeklyyyCmb.Text);
-            var dayOnly = startDate.Day;
+            var dayOnly = startDate.Date;
             foreach (var item in vis)
             {
 
 
-                var visitorsDate = item.inDateTime.Day;
+                var visitorsDate = item.inDateTime.Date;
 
                 if (dayOnly == visitorsDate)
                 {
                     sundayVisitors = sundayVisitors + 1;
                     sundayIncome = sundayIncome + item.paid;
                 }
-                else if (visitorsDate == (dayOnly+1))
+                else if (visitorsDate == (dayOnly.AddDays(1)))
                 {
                     mondayVisitors = mondayVisitors + 1;
                     mondayIncome = mondayIncome + item.paid;
 
                 }
-                else if (visitorsDate == (dayOnly+2))
+                else if (visitorsDate == (dayOnly.AddDays(2))) 
                 {
                     tuesdayIncome = tuesdayIncome + item.paid;
                     tuesdayVisitors += 1;
                 }
-                else if (visitorsDate == (dayOnly+3))
+                else if (visitorsDate == (dayOnly.AddDays(3))) 
                 {
                     wednesdayIncome += item.paid;
                     wednesdayVisitors += 1;
 
                 }
 
-                else if (visitorsDate == (dayOnly + 4))
+                else if (visitorsDate == (dayOnly.AddDays(4)))
                 {
                     thursdayIncome += item.paid;
                     thursdayVisitors += 1;
 
 
                 }
-                else if (visitorsDate == (dayOnly +5))
+                else if (visitorsDate == (dayOnly.AddDays(5)))
                 {
                     fridayVisitors += 1;
                     fridayIncome += item.paid;
                 }
-                else if (visitorsDate == (dayOnly+6))
+                else if (visitorsDate == (dayOnly.AddDays(6)))
                 {
                     saturdayVisitors += 1;
                     saturdayIncome += item.paid;
                 }
             }
             List<WeeklyReport> wr = new List<WeeklyReport>();
-            wr.Add(new WeeklyReport { day = "Sunday", visitors = sundayVisitors, income = sundayIncome });
-            wr.Add(new WeeklyReport { day = "Monday", visitors = mondayVisitors, income = mondayIncome });
-            wr.Add(new WeeklyReport { day = "Tuesday", visitors = tuesdayVisitors, income = tuesdayIncome });
-            wr.Add(new WeeklyReport { day = "Wednesday", visitors = wednesdayVisitors, income = wednesdayIncome });
-            wr.Add(new WeeklyReport { day = "Thursday", visitors = thursdayVisitors, income = thursdayIncome });
-            wr.Add(new WeeklyReport { day = "Friday", visitors = fridayVisitors, income = fridayIncome });
-            wr.Add(new WeeklyReport { day = "Saturday", visitors = saturdayVisitors, income = saturdayIncome });
+            wr.Add(new WeeklyReport { date= dayOnly, day = "Sunday", visitors = sundayVisitors, income = sundayIncome });
+            wr.Add(new WeeklyReport { date= dayOnly.AddDays(1), day = "Monday", visitors = mondayVisitors, income = mondayIncome });
+            wr.Add(new WeeklyReport { date= dayOnly.AddDays(2), day = "Tuesday", visitors = tuesdayVisitors, income = tuesdayIncome });
+            wr.Add(new WeeklyReport { date= dayOnly.AddDays(3), day = "Wednesday", visitors = wednesdayVisitors, income = wednesdayIncome });
+            wr.Add(new WeeklyReport { date= dayOnly.AddDays(4), day = "Thursday", visitors = thursdayVisitors, income = thursdayIncome });
+            wr.Add(new WeeklyReport { date= dayOnly.AddDays(5), day = "Friday", visitors = fridayVisitors, income = fridayIncome });
+            wr.Add(new WeeklyReport { date= dayOnly.AddDays(6), day = "Saturday", visitors = saturdayVisitors, income = saturdayIncome });
 
             return wr;
 
@@ -579,6 +588,54 @@ namespace Coursework
         private void SortByIncome_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void button1_Click(object sender, EventArgs e) //Daily Report generating button
+        {
+            List<CheckedoutVisitors> chv = GetCheckedoutVisitors();
+
+            List<CheckedoutVisitors>  matched = new List<CheckedoutVisitors>();
+
+            DateTime checkDate = DateTime.Parse(dailymmCmb.Text + "-" + dailyddCmb.Text + "-" + dailyyyCmb.Text);
+
+            foreach (var item in chv)
+            {
+                if (checkDate.Date == item.inDateTime.Date)
+                {
+                    matched.Add(item);
+                }
+            }
+
+
+            dailyReportGrid.DataSource = matched;
+
+        }
+
+        private void button2_Click(object sender, EventArgs e) // Wekly Report All visitors showing button
+        {
+            List<CheckedoutVisitors> vis = new List<CheckedoutVisitors>();
+
+            vis = GetCheckedoutVisitors();
+
+            weeklyDataGrid.DataSource = vis;
+        }
+
+        private void GenerateWeeklyReport_Click(object sender, EventArgs e)
+        {
+            string path = "C:/Users/bhara/source/repos/Coursework/WeeklyReport.csv";
+
+            CreateCSV(path, weeklyDataGrid);
+            MessageBox.Show("CSV report generated Successfully");
+        }
+
+        private void GenerateGraph_Click(object sender, EventArgs e)
+        {
+            Graph graphform = new Graph();
+            List<WeeklyReport> list = GetWeeklyReport();
+
+            graphform.LoadGraph(list);
+            graphform.Show();
+
         }
     }
 }

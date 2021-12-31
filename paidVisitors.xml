@@ -33,4 +33,26 @@
     <outDateTime>2021-12-31T11:00:00</outDateTime>
     <paid>1650</paid>
   </CheckedoutVisitors>
+  <CheckedoutVisitors>
+    <fullname>Ron</fullname>
+    <email>Ron</email>
+    <phone>987</phone>
+    <category>Group of 10</category>
+    <inDateTime>2022-03-01T10:00:00</inDateTime>
+    <totalVisitors>14</totalVisitors>
+    <totalChildren>4</totalChildren>
+    <outDateTime>2021-12-31T12:00:00</outDateTime>
+    <paid>6000</paid>
+  </CheckedoutVisitors>
+  <CheckedoutVisitors>
+    <fullname>Bob</fullname>
+    <email>Bob</email>
+    <phone>77412</phone>
+    <category>Group of 15</category>
+    <inDateTime>2022-06-01T11:00:00</inDateTime>
+    <totalVisitors>14</totalVisitors>
+    <totalChildren>4</totalChildren>
+    <outDateTime>2021-12-31T14:00:00</outDateTime>
+    <paid>14000</paid>
+  </CheckedoutVisitors>
 </ArrayOfCheckedoutVisitors>
