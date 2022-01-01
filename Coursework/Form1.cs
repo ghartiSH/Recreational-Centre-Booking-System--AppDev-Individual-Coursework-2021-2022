@@ -33,7 +33,6 @@ namespace Coursework
             paidSerializer = new XmlSerializer(typeof(List<CheckedoutVisitors>));
             checkedoutVisitors = new List<CheckedoutVisitors>();
             
-            LoadTicket();
             LoadXml();
             LoadCheckedVisitorsXML();
         }
@@ -72,18 +71,11 @@ namespace Coursework
                             phoneError.Visible = false;
                             if (vs.totalVisitors > 0)
                             {
-                                if (!visitors.Contains(vs))
-                                {
-                                    visitorsError.Visible = false;
-                                    phoneError.Visible = false;
-                                    visitors.Add(vs);
-                                    xmlSerializer.Serialize(file, visitors);
-                                    MessageBox.Show("Visitor added Successfylly..!");
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Record already added");
-                                }
+                                visitorsError.Visible = false;
+                                phoneError.Visible = false;
+                                visitors.Add(vs);
+                                xmlSerializer.Serialize(file, visitors);
+                                MessageBox.Show("Visitor added Successfylly..!");
                             }
                             else
                             {
@@ -123,13 +115,6 @@ namespace Coursework
             visitorListGrid.DataSource = vis;
         }
 
-        private void LoadTicket()
-        {
-           
-            DataTable dt = new DataTable();
-            dt = GetTicket();
-            ticketGrid.DataSource = dt; 
-        }
 
         private void LoadXml()
         {
@@ -160,106 +145,113 @@ namespace Coursework
         
         private void Calculate_Click(object sender, EventArgs e)
         {
-            List<Visitors> matchList = FindVisitors();
-            DataTable dt = GetTicket();
-            ArrayList arr = new ArrayList();
-            int totalBill=0;
-            CheckedoutVisitors cv = new CheckedoutVisitors();
-
-            foreach (DataRow row in dt.Rows)
+            try
             {
-                foreach (DataColumn column in dt.Columns)
+                List<Visitors> matchList = FindVisitors();
+                DataTable dt = GetTicket();
+                ArrayList arr = new ArrayList();
+                int totalBill = 0;
+                CheckedoutVisitors cv = new CheckedoutVisitors();
+
+                foreach (DataRow row in dt.Rows)
                 {
+                    foreach (DataColumn column in dt.Columns)
+                    {
 
-                    arr.Add(row[column]);
+                        arr.Add(row[column]);
+                    }
                 }
-            }
 
-            foreach (var visitor in matchList)
+                foreach (var visitor in matchList)
+                {
+                    int outTime = int.Parse(outHHCmb.Text);
+                    int inTime = visitor.inDateTime.Hour;
+
+                    var result = (outTime - inTime);
+
+
+                    for (int i = 0; i < arr.Count; i++)
+                    {
+
+                        if (visitor.totalVisitors < 5)
+                        {
+                            if (arr[i].ToString() == visitor.category)
+                            {
+                                if (result == 1)
+                                {
+                                    totalBill = visitor.totalVisitors * int.Parse(arr[i + 1].ToString());
+                                }
+                                else if (result == 2)
+                                {
+                                    totalBill = visitor.totalVisitors * int.Parse(arr[i + 2].ToString());
+                                }
+                                else if (result == 3)
+                                {
+                                    totalBill = visitor.totalVisitors * int.Parse(arr[i + 3].ToString());
+                                }
+                                else if (result == 4)
+                                {
+                                    totalBill = visitor.totalVisitors * int.Parse(arr[i + 4].ToString());
+                                }
+                                else
+                                {
+                                    totalBill = visitor.totalVisitors * int.Parse(arr[i + 5].ToString());
+                                }
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            if (arr[i].ToString() == visitor.category)
+                            {
+                                if (result == 1)
+                                {
+                                    totalBill = int.Parse(arr[i + 1].ToString());
+                                }
+                                else if (result == 2)
+                                {
+                                    totalBill = int.Parse(arr[i + 2].ToString());
+                                }
+                                else if (result == 3)
+                                {
+                                    totalBill = int.Parse(arr[i + 3].ToString());
+                                }
+                                else if (result == 4)
+                                {
+                                    totalBill = int.Parse(arr[i + 4].ToString());
+                                }
+                                else
+                                {
+                                    totalBill = int.Parse(arr[i + 5].ToString());
+                                }
+                                break;
+                            }
+                        }
+
+                    }
+                    message.Text = "Hello " + visitor.fullname + " !!!... You've played for " + result + " hours.";
+
+                    cv.fullname = visitor.fullname;
+                    cv.email = visitor.fullname;
+                    cv.phone = visitor.phone;
+                    cv.category = visitor.category;
+                    cv.inDateTime = visitor.inDateTime;
+                    cv.totalVisitors = visitor.totalVisitors;
+                    cv.totalChildren = visitor.totalChildren;
+                    cv.outDateTime = DateTime.Parse(outHHCmb.Text + ":" + outMinCmb.Text);
+                    cv.paid = totalBill;
+
+                    checkedoutVisitors.Add(cv);
+
+
+                }
+
+                billTxt.Text = totalBill.ToString();
+            }
+            catch
             {
-                int outTime = int.Parse(outHHCmb.Text);
-                int inTime = visitor.inDateTime.Hour;
-
-                var result = (outTime - inTime);
-
-                
-                for (int i=0; i<arr.Count; i++)
-                {
-
-                    if (visitor.totalVisitors < 5)
-                    {
-                        if (arr[i].ToString() == visitor.category)
-                        {
-                            if (result == 1)
-                            {
-                                totalBill = visitor.totalVisitors * int.Parse(arr[i + 1].ToString());
-                            }
-                            else if (result == 2)
-                            {
-                                totalBill = visitor.totalVisitors * int.Parse(arr[i + 2].ToString());
-                            }
-                            else if (result == 3)
-                            {
-                                totalBill = visitor.totalVisitors * int.Parse(arr[i + 3].ToString());
-                            }
-                            else if (result == 4)
-                            {
-                                totalBill = visitor.totalVisitors * int.Parse(arr[i + 4].ToString());
-                            }
-                            else
-                            {
-                                totalBill = visitor.totalVisitors * int.Parse(arr[i + 5].ToString());
-                            }
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        if (arr[i].ToString() == visitor.category)
-                        {
-                            if (result == 1)
-                            {
-                                totalBill = int.Parse(arr[i + 1].ToString());
-                            }
-                            else if (result == 2)
-                            {
-                                totalBill = int.Parse(arr[i + 2].ToString());
-                            }
-                            else if (result == 3)
-                            {
-                                totalBill = int.Parse(arr[i + 3].ToString());
-                            }
-                            else if (result == 4)
-                            {
-                                totalBill = int.Parse(arr[i + 4].ToString());
-                            }
-                            else
-                            {
-                                totalBill = int.Parse(arr[i + 5].ToString());
-                            }
-                            break;
-                        }
-                    }
-                    
-                }
-                message.Text = "Hello " + visitor.fullname + " !!!... You've played for " + result + " hours.";
-
-                cv.fullname = visitor.fullname;
-                cv.email = visitor.fullname;
-                cv.phone = visitor.phone;
-                cv.category = visitor.category;
-                cv.inDateTime = visitor.inDateTime;
-                cv.totalVisitors = visitor.totalVisitors;
-                cv.totalChildren = visitor.totalChildren;
-                cv.outDateTime = DateTime.Parse(outHHCmb.Text + ":" + outMinCmb.Text);
-                cv.paid = totalBill;
-
-                checkedoutVisitors.Add(cv);
-
-
+                MessageBox.Show("Ticket Price Error!!");
             }
-            
-            billTxt.Text = totalBill.ToString();
         }
 
         private void button3_Click(object sender, EventArgs e) //viewing checked out visitors button
@@ -425,7 +417,6 @@ namespace Coursework
                         dt.Rows.Add(dr);
                     }
                 }
-
             }
 
             catch
@@ -448,7 +439,7 @@ namespace Coursework
 
             foreach(DataGridViewColumn coln in dg.Columns)
             {
-                csv  += coln.HeaderText + ',';
+                    csv += coln.HeaderText + ',';
             }
 
             csv += "\r\n";
@@ -457,7 +448,10 @@ namespace Coursework
             {
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    csv += cell.Value.ToString().Replace(",",",") + ',';
+                    if (cell != null)
+                    {
+                        csv += cell.Value.ToString().Replace(",", ";") + ',';
+                    }
                 }
 
                 csv += "\r\n";
@@ -700,87 +694,96 @@ namespace Coursework
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            ticketPanel.Visible = true;
+            string uname = usernameTxt.Text;
+            string password = passwordTxt.Text;
+
+            if (uname == "admin" && password =="admin")
+            {
+                ticketPanel.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Not Authorized.");
+            }
         }
 
         private void SetTicket_Click(object sender, EventArgs e)
         {
 
-            var hasNumber = new Regex("^[0-9]+$");
+            //Build the CSV file data as a Comma separated string.
+            string csv = "";
 
-
-            var isvalidOne = hasNumber.IsMatch(coTxt.Text);
-            var isvalidTwo = hasNumber.IsMatch(ctTxt.Text);
-            var isvalidThree = hasNumber.IsMatch(ctrTxt.Text);
-            var isvalidFour = hasNumber.IsMatch(cfTxt.Text);
-            var isvalidFive = hasNumber.IsMatch(cfiText.Text);
-
-            var isvalidSix = hasNumber.IsMatch(aoTxt.Text);
-            var isvalidSeven = hasNumber.IsMatch(atTxt.Text);
-            var isvalidEight = hasNumber.IsMatch(atrTxt.Text);
-            var isvalidNine = hasNumber.IsMatch(afTxt.Text);
-            var isvalidTen = hasNumber.IsMatch(afiTxt.Text);
-
-            var isvalidEleven = hasNumber.IsMatch(gfoTxt.Text);
-            var isvalidTwelve = hasNumber.IsMatch(gftTxt.Text);
-            var isvalidThirteen = hasNumber.IsMatch(gftrTxt.Text);
-            var isvalidFourteen = hasNumber.IsMatch(gffTxt.Text);
-            var isvalidFifteen = hasNumber.IsMatch(gffiTxt.Text);
-
-            var isvalidSixteen = hasNumber.IsMatch(gtoTxt.Text);
-            var isvalidSeventeen = hasNumber.IsMatch(gttTxt.Text);
-            var isvalidEighteen = hasNumber.IsMatch(gttrTxt.Text);
-            var isvalidNineteen = hasNumber.IsMatch(gtfTxt.Text);
-            var isvalidTwenty = hasNumber.IsMatch(gtfiTxt.Text);
-
-            var isvalidTwentyone = hasNumber.IsMatch(gfifoTxt.Text);
-            var isvalidTwentytwo = hasNumber.IsMatch(gfiftTxt.Text);
-            var isvalidTwentythree = hasNumber.IsMatch(gfiftrTxt.Text);
-            var isvalidTwentyfour = hasNumber.IsMatch(gfiffTxt.Text);
-            var isvalidTwentyFive = hasNumber.IsMatch(gfiffiTxt.Text);
-
-
-            if (isvalidOne && isvalidTwo &&isvalidThree && isvalidFour&& isvalidFive&& isvalidSix&&isvalidSeven&&isvalidEight&&isvalidNine&&isvalidTen&&isvalidEleven&&isvalidTwelve&&isvalidThirteen&&isvalidFourteen&&isvalidFifteen&&isvalidSixteen&&isvalidSeventeen&&isvalidEighteen&&isvalidNineteen&&isvalidTwenty&&isvalidTwentyone&&isvalidTwentytwo&&isvalidTwentythree&&isvalidTwentyfour&&isvalidTwentyFive)
+            //Add the Header row for CSV file.
+            for (int i=0; i<6; i++)
             {
-                weeklyDataGrid.ColumnCount = 6;
-                weeklyDataGrid.ColumnHeadersVisible = true;
-
-                weeklyDataGrid.Columns[0].Name = categoryLbl.Text;
-                weeklyDataGrid.Columns[1].Name = onehrLbl.Text;
-                weeklyDataGrid.Columns[2].Name = twohrLbl.Text;
-                weeklyDataGrid.Columns[3].Name = threehrLbl.Text;
-                weeklyDataGrid.Columns[4].Name = fourhrLbl.Text;
-                weeklyDataGrid.Columns[5].Name = fivehrLbl.Text;
-
-
-                string[] childRow = new string[] { childLbl.Text, coTxt.Text, ctTxt.Text, ctrTxt.Text, cfTxt.Text, cfiText.Text };
-                string[] adultRow = new string[] { adultLbl.Text, aoTxt.Text, atTxt.Text, atrTxt.Text, afTxt.Text, afiTxt.Text };
-                string[] gfiveRow = new string[] { groupfiveLbl.Text, gfoTxt.Text, gftTxt.Text, gftrTxt.Text, gffTxt.Text, gffiTxt.Text };
-                string[] gtenRow = new string[] { grouptenLbl.Text, gtoTxt.Text, gttTxt.Text, gttrTxt.Text, gtfTxt.Text, gtfiTxt.Text };
-                string[] gfifteenRow = new string[] { groupfifteenLbl.Text, gfifoTxt.Text, gfiftTxt.Text, gfiftrTxt.Text, gfiffTxt.Text, gfiffiTxt.Text };
-
-                object[] rows = new object[] { childRow, adultRow, gfiveRow, gtenRow, gfifteenRow };
-
-                foreach (string[] rowarray in rows)
+                if (i==5)
                 {
-                    weeklyDataGrid.Rows.Add(rowarray);
+                    csv += adminTicketGrid.Columns[i].HeaderText;
+                }
+                else
+                {
+                    csv += adminTicketGrid.Columns[i].HeaderText + ',';
+                }
+            }
+
+            //Add new line.
+            csv += "\r\n";
+
+            //Adding the Rows
+            foreach (DataGridViewRow row in adminTicketGrid.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    //Add the Data rows.
+                    csv += cell.Value.ToString().Replace(",", ";") + ',';
                 }
 
-               
-                //string path = "C:/Users/bhara/source/repos/Coursework/ticket.csv";
-                //CreateCSV(path, weeklyDataGrid);
-                //MessageBox.Show("New Ticket Created Successfully..");
-                
-
-
+                //Add new line.
+                csv += "\r\n";
             }
-            else
+
+            //Exporting to CSV.
+            string folderPath = "C:/Users/bhara/source/repos/Coursework/";
+            File.WriteAllText(folderPath + "ticket.csv", csv);
+            MessageBox.Show("Ticket Edited Successfully..");
+
+        }
+
+        private void ViewTicket_Click(object sender, EventArgs e)
+        {
+            DataTable tb = new DataTable();
+            tb = GetTicket();
+
+            adminTicketGrid.DataSource = tb;
+
+            ticketMessage.Visible = true;
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dt = GetTicket();
+            ticketGrid.DataSource = dt;
+        }
+
+
+
+        private void searchVisitor_Click(object sender, EventArgs e)
+        {
+            List<CheckedoutVisitors> vis = new List<CheckedoutVisitors>();
+            vis = GetCheckedoutVisitors();
+
+            string cat = reportCategory.Text;
+            List<CheckedoutVisitors> matched = new List<CheckedoutVisitors>();
+            foreach (var item in vis)
             {
-                MessageBox.Show("String values not allowed in ticket rate");
+                if (item.category == cat)
+                {
+                    matched.Add(item);
+                }
             }
-
-           
-
+            dailyReportGrid.DataSource = matched;
 
         }
     }

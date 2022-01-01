@@ -1,30 +1,12 @@
 <?xml version="1.0"?>
 <ArrayOfVisitors xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Visitors>
-    <fullname>Sam</fullname>
-    <email>sam@gmail.com</email>
-    <phone>7425</phone>
-    <category>Child</category>
-    <inDateTime>2022-01-01T12:00:00</inDateTime>
-    <totalVisitors>4</totalVisitors>
-    <totalChildren>0</totalChildren>
-  </Visitors>
-  <Visitors>
-    <fullname>Binayak</fullname>
-    <email>bin@gmail.com</email>
-    <phone>75321</phone>
-    <category>Group of 5</category>
-    <inDateTime>2022-01-01T10:00:00</inDateTime>
-    <totalVisitors>5</totalVisitors>
-    <totalChildren>0</totalChildren>
-  </Visitors>
-  <Visitors>
-    <fullname>Binayak</fullname>
-    <email>bin@gmail.com</email>
-    <phone>75321</phone>
-    <category>Group of 5</category>
-    <inDateTime>2022-01-01T10:00:00</inDateTime>
-    <totalVisitors>5</totalVisitors>
+    <fullname>Ted</fullname>
+    <email>ted@email.com</email>
+    <phone>9852</phone>
+    <category>Adult</category>
+    <inDateTime>2022-01-04T10:00:00</inDateTime>
+    <totalVisitors>2</totalVisitors>
     <totalChildren>0</totalChildren>
   </Visitors>
 </ArrayOfVisitors>

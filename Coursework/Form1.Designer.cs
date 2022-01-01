@@ -32,6 +32,7 @@ namespace Coursework
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Home = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.ticketGrid = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -120,53 +121,23 @@ namespace Coursework
             this.AdminPanel = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
             this.ticketPanel = new System.Windows.Forms.Panel();
+            this.adminTicketGrid = new System.Windows.Forms.DataGridView();
+            this.ViewTicket = new System.Windows.Forms.Button();
+            this.SetTicket = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.loginButton = new System.Windows.Forms.Button();
-            this.passwordText = new System.Windows.Forms.TextBox();
+            this.passwordTxt = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.usernameTxt = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.openTicket = new System.Windows.Forms.OpenFileDialog();
-            this.categoryLbl = new System.Windows.Forms.Label();
-            this.onehrLbl = new System.Windows.Forms.Label();
-            this.twohrLbl = new System.Windows.Forms.Label();
-            this.threehrLbl = new System.Windows.Forms.Label();
-            this.fourhrLbl = new System.Windows.Forms.Label();
-            this.fivehrLbl = new System.Windows.Forms.Label();
-            this.childLbl = new System.Windows.Forms.Label();
-            this.adultLbl = new System.Windows.Forms.Label();
-            this.groupfiveLbl = new System.Windows.Forms.Label();
-            this.grouptenLbl = new System.Windows.Forms.Label();
-            this.groupfifteenLbl = new System.Windows.Forms.Label();
-            this.coTxt = new System.Windows.Forms.TextBox();
-            this.ctTxt = new System.Windows.Forms.TextBox();
-            this.ctrTxt = new System.Windows.Forms.TextBox();
-            this.cfTxt = new System.Windows.Forms.TextBox();
-            this.cfiText = new System.Windows.Forms.TextBox();
-            this.atrTxt = new System.Windows.Forms.TextBox();
-            this.afiTxt = new System.Windows.Forms.TextBox();
-            this.afTxt = new System.Windows.Forms.TextBox();
-            this.atTxt = new System.Windows.Forms.TextBox();
-            this.aoTxt = new System.Windows.Forms.TextBox();
-            this.gfiffiTxt = new System.Windows.Forms.TextBox();
-            this.gfiffTxt = new System.Windows.Forms.TextBox();
-            this.gfiftrTxt = new System.Windows.Forms.TextBox();
-            this.gfiftTxt = new System.Windows.Forms.TextBox();
-            this.gfifoTxt = new System.Windows.Forms.TextBox();
-            this.gtfiTxt = new System.Windows.Forms.TextBox();
-            this.gtfTxt = new System.Windows.Forms.TextBox();
-            this.gttrTxt = new System.Windows.Forms.TextBox();
-            this.gttTxt = new System.Windows.Forms.TextBox();
-            this.gtoTxt = new System.Windows.Forms.TextBox();
-            this.gftrTxt = new System.Windows.Forms.TextBox();
-            this.gffiTxt = new System.Windows.Forms.TextBox();
-            this.gffTxt = new System.Windows.Forms.TextBox();
-            this.gftTxt = new System.Windows.Forms.TextBox();
-            this.gfoTxt = new System.Windows.Forms.TextBox();
-            this.SetTicket = new System.Windows.Forms.Button();
+            this.ticketMessage = new System.Windows.Forms.Label();
+            this.reportCategory = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.searchVisitor = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Home.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -188,6 +159,7 @@ namespace Coursework
             this.AdminPanel.SuspendLayout();
             this.panel8.SuspendLayout();
             this.ticketPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.adminTicketGrid)).BeginInit();
             this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -223,12 +195,24 @@ namespace Coursework
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.ticketGrid);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(5, 348);
+            this.panel2.Location = new System.Drawing.Point(5, 335);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1042, 256);
+            this.panel2.Size = new System.Drawing.Size(1042, 269);
             this.panel2.TabIndex = 5;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(409, 199);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(173, 54);
+            this.button3.TabIndex = 31;
+            this.button3.Text = "View Ticket";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // ticketGrid
             // 
@@ -241,7 +225,8 @@ namespace Coursework
             this.ticketGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ticketGrid.Location = new System.Drawing.Point(6, 27);
             this.ticketGrid.Name = "ticketGrid";
-            this.ticketGrid.Size = new System.Drawing.Size(1031, 224);
+            this.ticketGrid.ReadOnly = true;
+            this.ticketGrid.Size = new System.Drawing.Size(1031, 166);
             this.ticketGrid.TabIndex = 2;
             // 
             // label3
@@ -295,7 +280,7 @@ namespace Coursework
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(5, 54);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1042, 288);
+            this.panel1.Size = new System.Drawing.Size(1042, 275);
             this.panel1.TabIndex = 4;
             // 
             // visitorsError
@@ -1093,6 +1078,9 @@ namespace Coursework
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.searchVisitor);
+            this.panel6.Controls.Add(this.reportCategory);
+            this.panel6.Controls.Add(this.label25);
             this.panel6.Controls.Add(this.button1);
             this.panel6.Controls.Add(this.dailyddCmb);
             this.panel6.Controls.Add(this.dailymmCmb);
@@ -1111,9 +1099,9 @@ namespace Coursework
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(299, 27);
+            this.button1.Location = new System.Drawing.Point(279, 27);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(253, 56);
+            this.button1.Size = new System.Drawing.Size(230, 56);
             this.button1.TabIndex = 43;
             this.button1.Text = "View Visitors by Date";
             this.button1.UseVisualStyleBackColor = true;
@@ -1231,7 +1219,7 @@ namespace Coursework
             this.VisitorsByCategory.Name = "VisitorsByCategory";
             this.VisitorsByCategory.Size = new System.Drawing.Size(274, 56);
             this.VisitorsByCategory.TabIndex = 37;
-            this.VisitorsByCategory.Text = "View Visitors By Category";
+            this.VisitorsByCategory.Text = "Total Visitors by Category";
             this.VisitorsByCategory.UseVisualStyleBackColor = true;
             this.VisitorsByCategory.Click += new System.EventHandler(this.VisitorsByCategory_Click);
             // 
@@ -1252,6 +1240,7 @@ namespace Coursework
             this.dailyReportGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dailyReportGrid.Location = new System.Drawing.Point(8, 95);
             this.dailyReportGrid.Name = "dailyReportGrid";
+            this.dailyReportGrid.ReadOnly = true;
             this.dailyReportGrid.Size = new System.Drawing.Size(1012, 343);
             this.dailyReportGrid.TabIndex = 4;
             // 
@@ -1495,6 +1484,7 @@ namespace Coursework
             this.weeklyDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.weeklyDataGrid.Location = new System.Drawing.Point(8, 86);
             this.weeklyDataGrid.Name = "weeklyDataGrid";
+            this.weeklyDataGrid.ReadOnly = true;
             this.weeklyDataGrid.Size = new System.Drawing.Size(1006, 333);
             this.weeklyDataGrid.TabIndex = 0;
             // 
@@ -1533,43 +1523,10 @@ namespace Coursework
             // ticketPanel
             // 
             this.ticketPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ticketPanel.Controls.Add(this.ticketMessage);
+            this.ticketPanel.Controls.Add(this.adminTicketGrid);
+            this.ticketPanel.Controls.Add(this.ViewTicket);
             this.ticketPanel.Controls.Add(this.SetTicket);
-            this.ticketPanel.Controls.Add(this.gfoTxt);
-            this.ticketPanel.Controls.Add(this.gftTxt);
-            this.ticketPanel.Controls.Add(this.gffTxt);
-            this.ticketPanel.Controls.Add(this.gffiTxt);
-            this.ticketPanel.Controls.Add(this.gftrTxt);
-            this.ticketPanel.Controls.Add(this.gtoTxt);
-            this.ticketPanel.Controls.Add(this.gttTxt);
-            this.ticketPanel.Controls.Add(this.gttrTxt);
-            this.ticketPanel.Controls.Add(this.gtfTxt);
-            this.ticketPanel.Controls.Add(this.gtfiTxt);
-            this.ticketPanel.Controls.Add(this.gfifoTxt);
-            this.ticketPanel.Controls.Add(this.gfiftTxt);
-            this.ticketPanel.Controls.Add(this.gfiftrTxt);
-            this.ticketPanel.Controls.Add(this.gfiffTxt);
-            this.ticketPanel.Controls.Add(this.gfiffiTxt);
-            this.ticketPanel.Controls.Add(this.aoTxt);
-            this.ticketPanel.Controls.Add(this.atTxt);
-            this.ticketPanel.Controls.Add(this.afTxt);
-            this.ticketPanel.Controls.Add(this.afiTxt);
-            this.ticketPanel.Controls.Add(this.atrTxt);
-            this.ticketPanel.Controls.Add(this.cfiText);
-            this.ticketPanel.Controls.Add(this.cfTxt);
-            this.ticketPanel.Controls.Add(this.ctrTxt);
-            this.ticketPanel.Controls.Add(this.ctTxt);
-            this.ticketPanel.Controls.Add(this.coTxt);
-            this.ticketPanel.Controls.Add(this.groupfifteenLbl);
-            this.ticketPanel.Controls.Add(this.grouptenLbl);
-            this.ticketPanel.Controls.Add(this.groupfiveLbl);
-            this.ticketPanel.Controls.Add(this.adultLbl);
-            this.ticketPanel.Controls.Add(this.childLbl);
-            this.ticketPanel.Controls.Add(this.fivehrLbl);
-            this.ticketPanel.Controls.Add(this.fourhrLbl);
-            this.ticketPanel.Controls.Add(this.threehrLbl);
-            this.ticketPanel.Controls.Add(this.twohrLbl);
-            this.ticketPanel.Controls.Add(this.onehrLbl);
-            this.ticketPanel.Controls.Add(this.categoryLbl);
             this.ticketPanel.Controls.Add(this.label24);
             this.ticketPanel.Location = new System.Drawing.Point(10, 181);
             this.ticketPanel.Name = "ticketPanel";
@@ -1577,11 +1534,46 @@ namespace Coursework
             this.ticketPanel.TabIndex = 10;
             this.ticketPanel.Visible = false;
             // 
+            // adminTicketGrid
+            // 
+            this.adminTicketGrid.AllowUserToAddRows = false;
+            this.adminTicketGrid.AllowUserToOrderColumns = true;
+            this.adminTicketGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.adminTicketGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.adminTicketGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.adminTicketGrid.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.adminTicketGrid.Location = new System.Drawing.Point(42, 56);
+            this.adminTicketGrid.Name = "adminTicketGrid";
+            this.adminTicketGrid.Size = new System.Drawing.Size(972, 196);
+            this.adminTicketGrid.TabIndex = 45;
+            // 
+            // ViewTicket
+            // 
+            this.ViewTicket.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewTicket.Location = new System.Drawing.Point(149, 291);
+            this.ViewTicket.Name = "ViewTicket";
+            this.ViewTicket.Size = new System.Drawing.Size(225, 53);
+            this.ViewTicket.TabIndex = 44;
+            this.ViewTicket.Text = "View Ticket";
+            this.ViewTicket.UseVisualStyleBackColor = true;
+            this.ViewTicket.Click += new System.EventHandler(this.ViewTicket_Click);
+            // 
+            // SetTicket
+            // 
+            this.SetTicket.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SetTicket.Location = new System.Drawing.Point(656, 291);
+            this.SetTicket.Name = "SetTicket";
+            this.SetTicket.Size = new System.Drawing.Size(225, 53);
+            this.SetTicket.TabIndex = 42;
+            this.SetTicket.Text = "Set Ticket Price";
+            this.SetTicket.UseVisualStyleBackColor = true;
+            this.SetTicket.Click += new System.EventHandler(this.SetTicket_Click);
+            // 
             // label24
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Rockwell", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(3, 0);
+            this.label24.Location = new System.Drawing.Point(3, 15);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(194, 25);
             this.label24.TabIndex = 6;
@@ -1592,7 +1584,7 @@ namespace Coursework
             this.panel9.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel9.Controls.Add(this.loginButton);
-            this.panel9.Controls.Add(this.passwordText);
+            this.panel9.Controls.Add(this.passwordTxt);
             this.panel9.Controls.Add(this.label23);
             this.panel9.Controls.Add(this.usernameTxt);
             this.panel9.Controls.Add(this.label22);
@@ -1613,13 +1605,13 @@ namespace Coursework
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
-            // passwordText
+            // passwordTxt
             // 
-            this.passwordText.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordText.Location = new System.Drawing.Point(518, 45);
-            this.passwordText.Name = "passwordText";
-            this.passwordText.Size = new System.Drawing.Size(192, 26);
-            this.passwordText.TabIndex = 9;
+            this.passwordTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordTxt.Location = new System.Drawing.Point(518, 45);
+            this.passwordTxt.Name = "passwordTxt";
+            this.passwordTxt.Size = new System.Drawing.Size(192, 26);
+            this.passwordTxt.TabIndex = 9;
             // 
             // label23
             // 
@@ -1673,326 +1665,54 @@ namespace Coursework
             // 
             this.openTicket.FileName = "openTicket";
             // 
-            // categoryLbl
-            // 
-            this.categoryLbl.AutoSize = true;
-            this.categoryLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoryLbl.Location = new System.Drawing.Point(80, 43);
-            this.categoryLbl.Name = "categoryLbl";
-            this.categoryLbl.Size = new System.Drawing.Size(79, 19);
-            this.categoryLbl.TabIndex = 7;
-            this.categoryLbl.Text = "Category";
-            // 
-            // onehrLbl
-            // 
-            this.onehrLbl.AutoSize = true;
-            this.onehrLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onehrLbl.Location = new System.Drawing.Point(249, 43);
-            this.onehrLbl.Name = "onehrLbl";
-            this.onehrLbl.Size = new System.Drawing.Size(36, 19);
-            this.onehrLbl.TabIndex = 8;
-            this.onehrLbl.Text = "1Hr";
-            // 
-            // twohrLbl
-            // 
-            this.twohrLbl.AutoSize = true;
-            this.twohrLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.twohrLbl.Location = new System.Drawing.Point(410, 43);
-            this.twohrLbl.Name = "twohrLbl";
-            this.twohrLbl.Size = new System.Drawing.Size(36, 19);
-            this.twohrLbl.TabIndex = 9;
-            this.twohrLbl.Text = "2Hr";
-            // 
-            // threehrLbl
-            // 
-            this.threehrLbl.AutoSize = true;
-            this.threehrLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.threehrLbl.Location = new System.Drawing.Point(564, 43);
-            this.threehrLbl.Name = "threehrLbl";
-            this.threehrLbl.Size = new System.Drawing.Size(36, 19);
-            this.threehrLbl.TabIndex = 10;
-            this.threehrLbl.Text = "3Hr";
-            // 
-            // fourhrLbl
-            // 
-            this.fourhrLbl.AutoSize = true;
-            this.fourhrLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fourhrLbl.Location = new System.Drawing.Point(732, 43);
-            this.fourhrLbl.Name = "fourhrLbl";
-            this.fourhrLbl.Size = new System.Drawing.Size(36, 19);
-            this.fourhrLbl.TabIndex = 11;
-            this.fourhrLbl.Text = "4Hr";
-            // 
-            // fivehrLbl
-            // 
-            this.fivehrLbl.AutoSize = true;
-            this.fivehrLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fivehrLbl.Location = new System.Drawing.Point(876, 43);
-            this.fivehrLbl.Name = "fivehrLbl";
-            this.fivehrLbl.Size = new System.Drawing.Size(88, 19);
-            this.fivehrLbl.TabIndex = 12;
-            this.fivehrLbl.Text = "Whole day";
-            // 
-            // childLbl
-            // 
-            this.childLbl.AutoSize = true;
-            this.childLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.childLbl.Location = new System.Drawing.Point(80, 88);
-            this.childLbl.Name = "childLbl";
-            this.childLbl.Size = new System.Drawing.Size(48, 19);
-            this.childLbl.TabIndex = 13;
-            this.childLbl.Text = "Child";
-            // 
-            // adultLbl
-            // 
-            this.adultLbl.AutoSize = true;
-            this.adultLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adultLbl.Location = new System.Drawing.Point(81, 134);
-            this.adultLbl.Name = "adultLbl";
-            this.adultLbl.Size = new System.Drawing.Size(48, 19);
-            this.adultLbl.TabIndex = 14;
-            this.adultLbl.Text = "Adult";
-            // 
-            // groupfiveLbl
-            // 
-            this.groupfiveLbl.AutoSize = true;
-            this.groupfiveLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupfiveLbl.Location = new System.Drawing.Point(81, 172);
-            this.groupfiveLbl.Name = "groupfiveLbl";
-            this.groupfiveLbl.Size = new System.Drawing.Size(88, 19);
-            this.groupfiveLbl.TabIndex = 15;
-            this.groupfiveLbl.Text = "Group of 5";
-            // 
-            // grouptenLbl
-            // 
-            this.grouptenLbl.AutoSize = true;
-            this.grouptenLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grouptenLbl.Location = new System.Drawing.Point(80, 210);
-            this.grouptenLbl.Name = "grouptenLbl";
-            this.grouptenLbl.Size = new System.Drawing.Size(97, 19);
-            this.grouptenLbl.TabIndex = 16;
-            this.grouptenLbl.Text = "Group of 10";
-            // 
-            // groupfifteenLbl
-            // 
-            this.groupfifteenLbl.AutoSize = true;
-            this.groupfifteenLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupfifteenLbl.Location = new System.Drawing.Point(80, 249);
-            this.groupfifteenLbl.Name = "groupfifteenLbl";
-            this.groupfifteenLbl.Size = new System.Drawing.Size(97, 19);
-            this.groupfifteenLbl.TabIndex = 17;
-            this.groupfifteenLbl.Text = "Group of 15";
-            // 
-            // coTxt
-            // 
-            this.coTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coTxt.Location = new System.Drawing.Point(230, 85);
-            this.coTxt.Name = "coTxt";
-            this.coTxt.Size = new System.Drawing.Size(82, 26);
-            this.coTxt.TabIndex = 18;
-            // 
-            // ctTxt
-            // 
-            this.ctTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctTxt.Location = new System.Drawing.Point(386, 85);
-            this.ctTxt.Name = "ctTxt";
-            this.ctTxt.Size = new System.Drawing.Size(82, 26);
-            this.ctTxt.TabIndex = 19;
-            // 
-            // ctrTxt
-            // 
-            this.ctrTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrTxt.Location = new System.Drawing.Point(546, 85);
-            this.ctrTxt.Name = "ctrTxt";
-            this.ctrTxt.Size = new System.Drawing.Size(82, 26);
-            this.ctrTxt.TabIndex = 20;
-            // 
-            // cfTxt
-            // 
-            this.cfTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cfTxt.Location = new System.Drawing.Point(711, 85);
-            this.cfTxt.Name = "cfTxt";
-            this.cfTxt.Size = new System.Drawing.Size(82, 26);
-            this.cfTxt.TabIndex = 21;
-            // 
-            // cfiText
-            // 
-            this.cfiText.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cfiText.Location = new System.Drawing.Point(880, 85);
-            this.cfiText.Name = "cfiText";
-            this.cfiText.Size = new System.Drawing.Size(82, 26);
-            this.cfiText.TabIndex = 22;
-            // 
-            // atrTxt
-            // 
-            this.atrTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.atrTxt.Location = new System.Drawing.Point(546, 131);
-            this.atrTxt.Name = "atrTxt";
-            this.atrTxt.Size = new System.Drawing.Size(82, 26);
-            this.atrTxt.TabIndex = 23;
-            // 
-            // afiTxt
-            // 
-            this.afiTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.afiTxt.Location = new System.Drawing.Point(880, 131);
-            this.afiTxt.Name = "afiTxt";
-            this.afiTxt.Size = new System.Drawing.Size(82, 26);
-            this.afiTxt.TabIndex = 24;
-            // 
-            // afTxt
-            // 
-            this.afTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.afTxt.Location = new System.Drawing.Point(711, 131);
-            this.afTxt.Name = "afTxt";
-            this.afTxt.Size = new System.Drawing.Size(82, 26);
-            this.afTxt.TabIndex = 25;
-            // 
-            // atTxt
-            // 
-            this.atTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.atTxt.Location = new System.Drawing.Point(386, 131);
-            this.atTxt.Name = "atTxt";
-            this.atTxt.Size = new System.Drawing.Size(82, 26);
-            this.atTxt.TabIndex = 26;
-            // 
-            // aoTxt
-            // 
-            this.aoTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aoTxt.Location = new System.Drawing.Point(230, 131);
-            this.aoTxt.Name = "aoTxt";
-            this.aoTxt.Size = new System.Drawing.Size(82, 26);
-            this.aoTxt.TabIndex = 27;
-            // 
-            // gfiffiTxt
-            // 
-            this.gfiffiTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gfiffiTxt.Location = new System.Drawing.Point(880, 246);
-            this.gfiffiTxt.Name = "gfiffiTxt";
-            this.gfiffiTxt.Size = new System.Drawing.Size(82, 26);
-            this.gfiffiTxt.TabIndex = 28;
-            // 
-            // gfiffTxt
-            // 
-            this.gfiffTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gfiffTxt.Location = new System.Drawing.Point(711, 246);
-            this.gfiffTxt.Name = "gfiffTxt";
-            this.gfiffTxt.Size = new System.Drawing.Size(82, 26);
-            this.gfiffTxt.TabIndex = 29;
-            // 
-            // gfiftrTxt
-            // 
-            this.gfiftrTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gfiftrTxt.Location = new System.Drawing.Point(546, 246);
-            this.gfiftrTxt.Name = "gfiftrTxt";
-            this.gfiftrTxt.Size = new System.Drawing.Size(82, 26);
-            this.gfiftrTxt.TabIndex = 30;
-            // 
-            // gfiftTxt
-            // 
-            this.gfiftTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gfiftTxt.Location = new System.Drawing.Point(386, 246);
-            this.gfiftTxt.Name = "gfiftTxt";
-            this.gfiftTxt.Size = new System.Drawing.Size(82, 26);
-            this.gfiftTxt.TabIndex = 31;
-            // 
-            // gfifoTxt
-            // 
-            this.gfifoTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gfifoTxt.Location = new System.Drawing.Point(230, 246);
-            this.gfifoTxt.Name = "gfifoTxt";
-            this.gfifoTxt.Size = new System.Drawing.Size(82, 26);
-            this.gfifoTxt.TabIndex = 32;
-            // 
-            // gtfiTxt
-            // 
-            this.gtfiTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gtfiTxt.Location = new System.Drawing.Point(880, 207);
-            this.gtfiTxt.Name = "gtfiTxt";
-            this.gtfiTxt.Size = new System.Drawing.Size(82, 26);
-            this.gtfiTxt.TabIndex = 33;
-            // 
-            // gtfTxt
-            // 
-            this.gtfTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gtfTxt.Location = new System.Drawing.Point(711, 207);
-            this.gtfTxt.Name = "gtfTxt";
-            this.gtfTxt.Size = new System.Drawing.Size(82, 26);
-            this.gtfTxt.TabIndex = 34;
-            // 
-            // gttrTxt
-            // 
-            this.gttrTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gttrTxt.Location = new System.Drawing.Point(546, 207);
-            this.gttrTxt.Name = "gttrTxt";
-            this.gttrTxt.Size = new System.Drawing.Size(82, 26);
-            this.gttrTxt.TabIndex = 35;
-            // 
-            // gttTxt
-            // 
-            this.gttTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gttTxt.Location = new System.Drawing.Point(386, 207);
-            this.gttTxt.Name = "gttTxt";
-            this.gttTxt.Size = new System.Drawing.Size(82, 26);
-            this.gttTxt.TabIndex = 36;
-            // 
-            // gtoTxt
-            // 
-            this.gtoTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gtoTxt.Location = new System.Drawing.Point(230, 207);
-            this.gtoTxt.Name = "gtoTxt";
-            this.gtoTxt.Size = new System.Drawing.Size(82, 26);
-            this.gtoTxt.TabIndex = 37;
-            // 
-            // gftrTxt
-            // 
-            this.gftrTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gftrTxt.Location = new System.Drawing.Point(546, 169);
-            this.gftrTxt.Name = "gftrTxt";
-            this.gftrTxt.Size = new System.Drawing.Size(82, 26);
-            this.gftrTxt.TabIndex = 38;
-            // 
-            // gffiTxt
-            // 
-            this.gffiTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gffiTxt.Location = new System.Drawing.Point(880, 169);
-            this.gffiTxt.Name = "gffiTxt";
-            this.gffiTxt.Size = new System.Drawing.Size(82, 26);
-            this.gffiTxt.TabIndex = 39;
-            // 
-            // gffTxt
-            // 
-            this.gffTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gffTxt.Location = new System.Drawing.Point(711, 169);
-            this.gffTxt.Name = "gffTxt";
-            this.gffTxt.Size = new System.Drawing.Size(82, 26);
-            this.gffTxt.TabIndex = 40;
-            // 
-            // gftTxt
-            // 
-            this.gftTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gftTxt.Location = new System.Drawing.Point(386, 169);
-            this.gftTxt.Name = "gftTxt";
-            this.gftTxt.Size = new System.Drawing.Size(82, 26);
-            this.gftTxt.TabIndex = 41;
-            // 
-            // gfoTxt
-            // 
-            this.gfoTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gfoTxt.Location = new System.Drawing.Point(230, 169);
-            this.gfoTxt.Name = "gfoTxt";
-            this.gfoTxt.Size = new System.Drawing.Size(82, 26);
-            this.gfoTxt.TabIndex = 42;
-            // 
-            // SetTicket
-            // 
-            this.SetTicket.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SetTicket.Location = new System.Drawing.Point(414, 298);
-            this.SetTicket.Name = "SetTicket";
-            this.SetTicket.Size = new System.Drawing.Size(225, 53);
-            this.SetTicket.TabIndex = 42;
-            this.SetTicket.Text = "Set Ticket Price";
-            this.SetTicket.UseVisualStyleBackColor = true;
-            this.SetTicket.Click += new System.EventHandler(this.SetTicket_Click);
+            // ticketMessage
+            // 
+            this.ticketMessage.AutoSize = true;
+            this.ticketMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ticketMessage.Location = new System.Drawing.Point(188, 29);
+            this.ticketMessage.Name = "ticketMessage";
+            this.ticketMessage.Size = new System.Drawing.Size(834, 24);
+            this.ticketMessage.TabIndex = 52;
+            this.ticketMessage.Text = "Note: Give only Integer values to the ticket field and click SET TICKET PRICE to " +
+    "edit the ticket price.";
+            this.ticketMessage.Visible = false;
+            // 
+            // reportCategory
+            // 
+            this.reportCategory.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportCategory.FormattingEnabled = true;
+            this.reportCategory.Items.AddRange(new object[] {
+            "Adult",
+            "Child",
+            "Group of 5",
+            "Group of 10",
+            "Group of 15"});
+            this.reportCategory.Location = new System.Drawing.Point(611, 44);
+            this.reportCategory.Name = "reportCategory";
+            this.reportCategory.Size = new System.Drawing.Size(114, 27);
+            this.reportCategory.TabIndex = 45;
+            this.reportCategory.Text = "Adult";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(531, 47);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(84, 19);
+            this.label25.TabIndex = 44;
+            this.label25.Text = "Category:";
+            // 
+            // searchVisitor
+            // 
+            this.searchVisitor.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchVisitor.Location = new System.Drawing.Point(731, 27);
+            this.searchVisitor.Name = "searchVisitor";
+            this.searchVisitor.Size = new System.Drawing.Size(287, 56);
+            this.searchVisitor.TabIndex = 46;
+            this.searchVisitor.Text = "View Visitors by Category";
+            this.searchVisitor.UseVisualStyleBackColor = true;
+            this.searchVisitor.Click += new System.EventHandler(this.searchVisitor_Click);
             // 
             // Form1
             // 
@@ -2037,6 +1757,7 @@ namespace Coursework
             this.panel8.PerformLayout();
             this.ticketPanel.ResumeLayout(false);
             this.ticketPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.adminTicketGrid)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.ResumeLayout(false);
@@ -2104,7 +1825,6 @@ namespace Coursework
         private System.Windows.Forms.Button SortByIncome;
         private System.Windows.Forms.Button ViewCurrentVisitors;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button Register;
         private System.Windows.Forms.ComboBox childrenCmb;
         private System.Windows.Forms.ComboBox totalVisitorsCmb;
         private System.Windows.Forms.ComboBox minCmb;
@@ -2139,50 +1859,22 @@ namespace Coursework
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox passwordText;
+        private System.Windows.Forms.TextBox passwordTxt;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox usernameTxt;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.Panel ticketPanel;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox gfoTxt;
-        private System.Windows.Forms.TextBox gftTxt;
-        private System.Windows.Forms.TextBox gffTxt;
-        private System.Windows.Forms.TextBox gffiTxt;
-        private System.Windows.Forms.TextBox gftrTxt;
-        private System.Windows.Forms.TextBox gtoTxt;
-        private System.Windows.Forms.TextBox gttTxt;
-        private System.Windows.Forms.TextBox gttrTxt;
-        private System.Windows.Forms.TextBox gtfTxt;
-        private System.Windows.Forms.TextBox gtfiTxt;
-        private System.Windows.Forms.TextBox gfifoTxt;
-        private System.Windows.Forms.TextBox gfiftTxt;
-        private System.Windows.Forms.TextBox gfiftrTxt;
-        private System.Windows.Forms.TextBox gfiffTxt;
-        private System.Windows.Forms.TextBox gfiffiTxt;
-        private System.Windows.Forms.TextBox aoTxt;
-        private System.Windows.Forms.TextBox atTxt;
-        private System.Windows.Forms.TextBox afTxt;
-        private System.Windows.Forms.TextBox afiTxt;
-        private System.Windows.Forms.TextBox atrTxt;
-        private System.Windows.Forms.TextBox cfiText;
-        private System.Windows.Forms.TextBox cfTxt;
-        private System.Windows.Forms.TextBox ctrTxt;
-        private System.Windows.Forms.TextBox ctTxt;
-        private System.Windows.Forms.TextBox coTxt;
-        private System.Windows.Forms.Label groupfifteenLbl;
-        private System.Windows.Forms.Label grouptenLbl;
-        private System.Windows.Forms.Label groupfiveLbl;
-        private System.Windows.Forms.Label adultLbl;
-        private System.Windows.Forms.Label childLbl;
-        private System.Windows.Forms.Label fivehrLbl;
-        private System.Windows.Forms.Label fourhrLbl;
-        private System.Windows.Forms.Label threehrLbl;
-        private System.Windows.Forms.Label twohrLbl;
-        private System.Windows.Forms.Label onehrLbl;
-        private System.Windows.Forms.Label categoryLbl;
         private System.Windows.Forms.Button SetTicket;
+        private System.Windows.Forms.Button ViewTicket;
+        private System.Windows.Forms.DataGridView adminTicketGrid;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button Register;
+        private System.Windows.Forms.Label ticketMessage;
+        private System.Windows.Forms.Button searchVisitor;
+        private System.Windows.Forms.ComboBox reportCategory;
+        private System.Windows.Forms.Label label25;
     }
 }
 

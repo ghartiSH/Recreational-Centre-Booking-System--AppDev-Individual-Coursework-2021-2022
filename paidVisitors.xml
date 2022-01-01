@@ -88,4 +88,37 @@
     <outDateTime>2022-01-01T15:00:00</outDateTime>
     <paid>8000</paid>
   </CheckedoutVisitors>
+  <CheckedoutVisitors>
+    <fullname>Ghun</fullname>
+    <email>Ghun</email>
+    <phone>1456</phone>
+    <category>Adult</category>
+    <inDateTime>2022-05-01T10:00:00</inDateTime>
+    <totalVisitors>6</totalVisitors>
+    <totalChildren>0</totalChildren>
+    <outDateTime>2022-01-01T11:00:00</outDateTime>
+    <paid>550</paid>
+  </CheckedoutVisitors>
+  <CheckedoutVisitors>
+    <fullname>Ghun</fullname>
+    <email>Ghun</email>
+    <phone>1456</phone>
+    <category>Adult</category>
+    <inDateTime>2022-05-01T10:00:00</inDateTime>
+    <totalVisitors>6</totalVisitors>
+    <totalChildren>0</totalChildren>
+    <outDateTime>2022-01-01T11:00:00</outDateTime>
+    <paid>550</paid>
+  </CheckedoutVisitors>
+  <CheckedoutVisitors>
+    <fullname>Ted</fullname>
+    <email>Ted</email>
+    <phone>9852</phone>
+    <category>Adult</category>
+    <inDateTime>2022-01-04T10:00:00</inDateTime>
+    <totalVisitors>2</totalVisitors>
+    <totalChildren>0</totalChildren>
+    <outDateTime>2022-01-02T11:00:00</outDateTime>
+    <paid>1100</paid>
+  </CheckedoutVisitors>
 </ArrayOfCheckedoutVisitors>
