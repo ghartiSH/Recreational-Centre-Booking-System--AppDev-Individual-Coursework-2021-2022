@@ -72,11 +72,18 @@ namespace Coursework
                             phoneError.Visible = false;
                             if (vs.totalVisitors > 0)
                             {
-                                visitorsError.Visible = false;
-                                phoneError.Visible = false;
-                                visitors.Add(vs);
-                                xmlSerializer.Serialize(file, visitors);
-                                MessageBox.Show("Visitor added Successfylly..!");
+                                if (!visitors.Contains(vs))
+                                {
+                                    visitorsError.Visible = false;
+                                    phoneError.Visible = false;
+                                    visitors.Add(vs);
+                                    xmlSerializer.Serialize(file, visitors);
+                                    MessageBox.Show("Visitor added Successfylly..!");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Record already added");
+                                }
                             }
                             else
                             {
@@ -468,9 +475,9 @@ namespace Coursework
             MessageBox.Show("CSV report generated Successfully");
         }
 
-        private void bubbleSort()
+        private int[] bubbleSort(int[] arr)
         {
-            int[] array = { 15, 8, 7, 6, 2, 1, 89, 54, 12 };
+            int[] array = arr;
             int temp;
 
             for (int i=0; i<array.Length-1; i++)
@@ -486,11 +493,38 @@ namespace Coursework
                        
                 }
             }
+            return array;
         }
 
         private void SortByVisitors_Click(object sender, EventArgs e)
         {
-            bubbleSort();
+            List<WeeklyReport> list = GetWeeklyReport();
+            int[] array = new int[list.Count];
+
+            int i = 0;
+            foreach(var item in list )
+            {
+                array[i] = item.visitors;
+                i++;
+            }
+
+            int[] sortedArray = bubbleSort(array);
+            List<WeeklyReport> sortedList = new List<WeeklyReport>();
+            for (int j=0; j<sortedArray.Length;j++ )
+            {
+                foreach(var ls in list)
+                {
+                    if (!sortedList.Contains(ls))
+                    {
+                        if (sortedArray[j] == ls.visitors)
+                        {
+                            sortedList.Add(ls);
+                            break;
+                        }
+                    }
+                }
+            }
+            weeklyDataGrid.DataSource = sortedList;
         }
 
         private void ViewWeeklyVisitors_Click(object sender, EventArgs e)
@@ -587,7 +621,33 @@ namespace Coursework
 
         private void SortByIncome_Click(object sender, EventArgs e)
         {
-            
+            List<WeeklyReport> list = GetWeeklyReport();
+            int[] array = new int[list.Count];
+
+            int i = 0;
+            foreach (var item in list)
+            {
+                array[i] = item.income;
+                i++;
+            }
+
+            int[] sortedArray = bubbleSort(array);
+            List<WeeklyReport> sortedList = new List<WeeklyReport>();
+            for (int j = 0; j < sortedArray.Length; j++)
+            {
+                foreach (var ls in list)
+                {
+                    if (!sortedList.Contains(ls))
+                    {
+                        if (sortedArray[j] == ls.income)
+                        {
+                            sortedList.Add(ls);
+                            break;
+                        }
+                    }
+                }
+            }
+            weeklyDataGrid.DataSource = sortedList;
         }
 
         private void button1_Click(object sender, EventArgs e) //Daily Report generating button
@@ -635,6 +695,92 @@ namespace Coursework
 
             graphform.LoadGraph(list);
             graphform.Show();
+
+        }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            ticketPanel.Visible = true;
+        }
+
+        private void SetTicket_Click(object sender, EventArgs e)
+        {
+
+            var hasNumber = new Regex("^[0-9]+$");
+
+
+            var isvalidOne = hasNumber.IsMatch(coTxt.Text);
+            var isvalidTwo = hasNumber.IsMatch(ctTxt.Text);
+            var isvalidThree = hasNumber.IsMatch(ctrTxt.Text);
+            var isvalidFour = hasNumber.IsMatch(cfTxt.Text);
+            var isvalidFive = hasNumber.IsMatch(cfiText.Text);
+
+            var isvalidSix = hasNumber.IsMatch(aoTxt.Text);
+            var isvalidSeven = hasNumber.IsMatch(atTxt.Text);
+            var isvalidEight = hasNumber.IsMatch(atrTxt.Text);
+            var isvalidNine = hasNumber.IsMatch(afTxt.Text);
+            var isvalidTen = hasNumber.IsMatch(afiTxt.Text);
+
+            var isvalidEleven = hasNumber.IsMatch(gfoTxt.Text);
+            var isvalidTwelve = hasNumber.IsMatch(gftTxt.Text);
+            var isvalidThirteen = hasNumber.IsMatch(gftrTxt.Text);
+            var isvalidFourteen = hasNumber.IsMatch(gffTxt.Text);
+            var isvalidFifteen = hasNumber.IsMatch(gffiTxt.Text);
+
+            var isvalidSixteen = hasNumber.IsMatch(gtoTxt.Text);
+            var isvalidSeventeen = hasNumber.IsMatch(gttTxt.Text);
+            var isvalidEighteen = hasNumber.IsMatch(gttrTxt.Text);
+            var isvalidNineteen = hasNumber.IsMatch(gtfTxt.Text);
+            var isvalidTwenty = hasNumber.IsMatch(gtfiTxt.Text);
+
+            var isvalidTwentyone = hasNumber.IsMatch(gfifoTxt.Text);
+            var isvalidTwentytwo = hasNumber.IsMatch(gfiftTxt.Text);
+            var isvalidTwentythree = hasNumber.IsMatch(gfiftrTxt.Text);
+            var isvalidTwentyfour = hasNumber.IsMatch(gfiffTxt.Text);
+            var isvalidTwentyFive = hasNumber.IsMatch(gfiffiTxt.Text);
+
+
+            if (isvalidOne && isvalidTwo &&isvalidThree && isvalidFour&& isvalidFive&& isvalidSix&&isvalidSeven&&isvalidEight&&isvalidNine&&isvalidTen&&isvalidEleven&&isvalidTwelve&&isvalidThirteen&&isvalidFourteen&&isvalidFifteen&&isvalidSixteen&&isvalidSeventeen&&isvalidEighteen&&isvalidNineteen&&isvalidTwenty&&isvalidTwentyone&&isvalidTwentytwo&&isvalidTwentythree&&isvalidTwentyfour&&isvalidTwentyFive)
+            {
+                weeklyDataGrid.ColumnCount = 6;
+                weeklyDataGrid.ColumnHeadersVisible = true;
+
+                weeklyDataGrid.Columns[0].Name = categoryLbl.Text;
+                weeklyDataGrid.Columns[1].Name = onehrLbl.Text;
+                weeklyDataGrid.Columns[2].Name = twohrLbl.Text;
+                weeklyDataGrid.Columns[3].Name = threehrLbl.Text;
+                weeklyDataGrid.Columns[4].Name = fourhrLbl.Text;
+                weeklyDataGrid.Columns[5].Name = fivehrLbl.Text;
+
+
+                string[] childRow = new string[] { childLbl.Text, coTxt.Text, ctTxt.Text, ctrTxt.Text, cfTxt.Text, cfiText.Text };
+                string[] adultRow = new string[] { adultLbl.Text, aoTxt.Text, atTxt.Text, atrTxt.Text, afTxt.Text, afiTxt.Text };
+                string[] gfiveRow = new string[] { groupfiveLbl.Text, gfoTxt.Text, gftTxt.Text, gftrTxt.Text, gffTxt.Text, gffiTxt.Text };
+                string[] gtenRow = new string[] { grouptenLbl.Text, gtoTxt.Text, gttTxt.Text, gttrTxt.Text, gtfTxt.Text, gtfiTxt.Text };
+                string[] gfifteenRow = new string[] { groupfifteenLbl.Text, gfifoTxt.Text, gfiftTxt.Text, gfiftrTxt.Text, gfiffTxt.Text, gfiffiTxt.Text };
+
+                object[] rows = new object[] { childRow, adultRow, gfiveRow, gtenRow, gfifteenRow };
+
+                foreach (string[] rowarray in rows)
+                {
+                    weeklyDataGrid.Rows.Add(rowarray);
+                }
+
+               
+                //string path = "C:/Users/bhara/source/repos/Coursework/ticket.csv";
+                //CreateCSV(path, weeklyDataGrid);
+                //MessageBox.Show("New Ticket Created Successfully..");
+                
+
+
+            }
+            else
+            {
+                MessageBox.Show("String values not allowed in ticket rate");
+            }
+
+           
+
 
         }
     }

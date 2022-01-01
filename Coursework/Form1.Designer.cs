@@ -69,6 +69,8 @@ namespace Coursework
             this.label4 = new System.Windows.Forms.Label();
             this.CheckoutVisitor = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.billError = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.Calculate = new System.Windows.Forms.Button();
             this.Checkout = new System.Windows.Forms.Button();
             this.paidBillTxt = new System.Windows.Forms.TextBox();
@@ -88,6 +90,7 @@ namespace Coursework
             this.label6 = new System.Windows.Forms.Label();
             this.DailyReport = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.dailyddCmb = new System.Windows.Forms.ComboBox();
             this.dailymmCmb = new System.Windows.Forms.ComboBox();
             this.dailyyyCmb = new System.Windows.Forms.ComboBox();
@@ -100,6 +103,8 @@ namespace Coursework
             this.label9 = new System.Windows.Forms.Label();
             this.WeeklyReport = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.GenerateGraph = new System.Windows.Forms.Button();
             this.SortByIncome = new System.Windows.Forms.Button();
             this.weeklyddCmb = new System.Windows.Forms.ComboBox();
@@ -113,12 +118,55 @@ namespace Coursework
             this.weeklyDataGrid = new System.Windows.Forms.DataGridView();
             this.label15 = new System.Windows.Forms.Label();
             this.AdminPanel = new System.Windows.Forms.TabPage();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.ticketPanel = new System.Windows.Forms.Panel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.loginButton = new System.Windows.Forms.Button();
+            this.passwordText = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.usernameTxt = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.openTicket = new System.Windows.Forms.OpenFileDialog();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.billError = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.categoryLbl = new System.Windows.Forms.Label();
+            this.onehrLbl = new System.Windows.Forms.Label();
+            this.twohrLbl = new System.Windows.Forms.Label();
+            this.threehrLbl = new System.Windows.Forms.Label();
+            this.fourhrLbl = new System.Windows.Forms.Label();
+            this.fivehrLbl = new System.Windows.Forms.Label();
+            this.childLbl = new System.Windows.Forms.Label();
+            this.adultLbl = new System.Windows.Forms.Label();
+            this.groupfiveLbl = new System.Windows.Forms.Label();
+            this.grouptenLbl = new System.Windows.Forms.Label();
+            this.groupfifteenLbl = new System.Windows.Forms.Label();
+            this.coTxt = new System.Windows.Forms.TextBox();
+            this.ctTxt = new System.Windows.Forms.TextBox();
+            this.ctrTxt = new System.Windows.Forms.TextBox();
+            this.cfTxt = new System.Windows.Forms.TextBox();
+            this.cfiText = new System.Windows.Forms.TextBox();
+            this.atrTxt = new System.Windows.Forms.TextBox();
+            this.afiTxt = new System.Windows.Forms.TextBox();
+            this.afTxt = new System.Windows.Forms.TextBox();
+            this.atTxt = new System.Windows.Forms.TextBox();
+            this.aoTxt = new System.Windows.Forms.TextBox();
+            this.gfiffiTxt = new System.Windows.Forms.TextBox();
+            this.gfiffTxt = new System.Windows.Forms.TextBox();
+            this.gfiftrTxt = new System.Windows.Forms.TextBox();
+            this.gfiftTxt = new System.Windows.Forms.TextBox();
+            this.gfifoTxt = new System.Windows.Forms.TextBox();
+            this.gtfiTxt = new System.Windows.Forms.TextBox();
+            this.gtfTxt = new System.Windows.Forms.TextBox();
+            this.gttrTxt = new System.Windows.Forms.TextBox();
+            this.gttTxt = new System.Windows.Forms.TextBox();
+            this.gtoTxt = new System.Windows.Forms.TextBox();
+            this.gftrTxt = new System.Windows.Forms.TextBox();
+            this.gffiTxt = new System.Windows.Forms.TextBox();
+            this.gffTxt = new System.Windows.Forms.TextBox();
+            this.gftTxt = new System.Windows.Forms.TextBox();
+            this.gfoTxt = new System.Windows.Forms.TextBox();
+            this.SetTicket = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Home.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -137,6 +185,10 @@ namespace Coursework
             this.WeeklyReport.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weeklyDataGrid)).BeginInit();
+            this.AdminPanel.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.ticketPanel.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -180,8 +232,13 @@ namespace Coursework
             // 
             // ticketGrid
             // 
+            this.ticketGrid.AllowUserToAddRows = false;
+            this.ticketGrid.AllowUserToDeleteRows = false;
+            this.ticketGrid.AllowUserToResizeColumns = false;
+            this.ticketGrid.AllowUserToResizeRows = false;
             this.ticketGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ticketGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ticketGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ticketGrid.Location = new System.Drawing.Point(6, 27);
             this.ticketGrid.Name = "ticketGrid";
             this.ticketGrid.Size = new System.Drawing.Size(1031, 224);
@@ -766,6 +823,26 @@ namespace Coursework
             this.panel4.Size = new System.Drawing.Size(1032, 550);
             this.panel4.TabIndex = 6;
             // 
+            // billError
+            // 
+            this.billError.AutoSize = true;
+            this.billError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.billError.ForeColor = System.Drawing.Color.Red;
+            this.billError.Location = new System.Drawing.Point(756, 392);
+            this.billError.Name = "billError";
+            this.billError.Size = new System.Drawing.Size(135, 13);
+            this.billError.TabIndex = 38;
+            this.billError.Text = "please enter valid amount.*";
+            this.billError.Visible = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(792, 389);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(0, 13);
+            this.label18.TabIndex = 37;
+            // 
             // Calculate
             // 
             this.Calculate.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1031,6 +1108,17 @@ namespace Coursework
             this.panel6.Size = new System.Drawing.Size(1034, 550);
             this.panel6.TabIndex = 7;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(299, 27);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(253, 56);
+            this.button1.TabIndex = 43;
+            this.button1.Text = "View Visitors by Date";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // dailyddCmb
             // 
             this.dailyddCmb.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1221,6 +1309,27 @@ namespace Coursework
             this.panel7.Size = new System.Drawing.Size(1030, 549);
             this.panel7.TabIndex = 8;
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(143, 61);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(239, 13);
+            this.label19.TabIndex = 51;
+            this.label19.Text = "Note: This pick this date as the start of the week.";
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(799, 14);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(215, 56);
+            this.button2.TabIndex = 50;
+            this.button2.Text = "View All Visitors ";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // GenerateGraph
             // 
             this.GenerateGraph.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1402,6 +1511,7 @@ namespace Coursework
             // AdminPanel
             // 
             this.AdminPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AdminPanel.Controls.Add(this.panel8);
             this.AdminPanel.Location = new System.Drawing.Point(4, 22);
             this.AdminPanel.Name = "AdminPanel";
             this.AdminPanel.Size = new System.Drawing.Size(1056, 610);
@@ -1409,61 +1519,480 @@ namespace Coursework
             this.AdminPanel.Text = "Admin Panel";
             this.AdminPanel.UseVisualStyleBackColor = true;
             // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel8.Controls.Add(this.ticketPanel);
+            this.panel8.Controls.Add(this.panel9);
+            this.panel8.Controls.Add(this.label20);
+            this.panel8.Location = new System.Drawing.Point(-5, -1);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(1060, 605);
+            this.panel8.TabIndex = 0;
+            // 
+            // ticketPanel
+            // 
+            this.ticketPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ticketPanel.Controls.Add(this.SetTicket);
+            this.ticketPanel.Controls.Add(this.gfoTxt);
+            this.ticketPanel.Controls.Add(this.gftTxt);
+            this.ticketPanel.Controls.Add(this.gffTxt);
+            this.ticketPanel.Controls.Add(this.gffiTxt);
+            this.ticketPanel.Controls.Add(this.gftrTxt);
+            this.ticketPanel.Controls.Add(this.gtoTxt);
+            this.ticketPanel.Controls.Add(this.gttTxt);
+            this.ticketPanel.Controls.Add(this.gttrTxt);
+            this.ticketPanel.Controls.Add(this.gtfTxt);
+            this.ticketPanel.Controls.Add(this.gtfiTxt);
+            this.ticketPanel.Controls.Add(this.gfifoTxt);
+            this.ticketPanel.Controls.Add(this.gfiftTxt);
+            this.ticketPanel.Controls.Add(this.gfiftrTxt);
+            this.ticketPanel.Controls.Add(this.gfiffTxt);
+            this.ticketPanel.Controls.Add(this.gfiffiTxt);
+            this.ticketPanel.Controls.Add(this.aoTxt);
+            this.ticketPanel.Controls.Add(this.atTxt);
+            this.ticketPanel.Controls.Add(this.afTxt);
+            this.ticketPanel.Controls.Add(this.afiTxt);
+            this.ticketPanel.Controls.Add(this.atrTxt);
+            this.ticketPanel.Controls.Add(this.cfiText);
+            this.ticketPanel.Controls.Add(this.cfTxt);
+            this.ticketPanel.Controls.Add(this.ctrTxt);
+            this.ticketPanel.Controls.Add(this.ctTxt);
+            this.ticketPanel.Controls.Add(this.coTxt);
+            this.ticketPanel.Controls.Add(this.groupfifteenLbl);
+            this.ticketPanel.Controls.Add(this.grouptenLbl);
+            this.ticketPanel.Controls.Add(this.groupfiveLbl);
+            this.ticketPanel.Controls.Add(this.adultLbl);
+            this.ticketPanel.Controls.Add(this.childLbl);
+            this.ticketPanel.Controls.Add(this.fivehrLbl);
+            this.ticketPanel.Controls.Add(this.fourhrLbl);
+            this.ticketPanel.Controls.Add(this.threehrLbl);
+            this.ticketPanel.Controls.Add(this.twohrLbl);
+            this.ticketPanel.Controls.Add(this.onehrLbl);
+            this.ticketPanel.Controls.Add(this.categoryLbl);
+            this.ticketPanel.Controls.Add(this.label24);
+            this.ticketPanel.Location = new System.Drawing.Point(10, 181);
+            this.ticketPanel.Name = "ticketPanel";
+            this.ticketPanel.Size = new System.Drawing.Size(1045, 366);
+            this.ticketPanel.TabIndex = 10;
+            this.ticketPanel.Visible = false;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Rockwell", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(3, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(194, 25);
+            this.label24.TabIndex = 6;
+            this.label24.Text = "Edit Ticket Prices";
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel9.Controls.Add(this.loginButton);
+            this.panel9.Controls.Add(this.passwordText);
+            this.panel9.Controls.Add(this.label23);
+            this.panel9.Controls.Add(this.usernameTxt);
+            this.panel9.Controls.Add(this.label22);
+            this.panel9.Controls.Add(this.label21);
+            this.panel9.Location = new System.Drawing.Point(0, 46);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1055, 112);
+            this.panel9.TabIndex = 9;
+            // 
+            // loginButton
+            // 
+            this.loginButton.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginButton.Location = new System.Drawing.Point(829, 28);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.Size = new System.Drawing.Size(165, 56);
+            this.loginButton.TabIndex = 41;
+            this.loginButton.Text = "Log In";
+            this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
+            // 
+            // passwordText
+            // 
+            this.passwordText.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordText.Location = new System.Drawing.Point(518, 45);
+            this.passwordText.Name = "passwordText";
+            this.passwordText.Size = new System.Drawing.Size(192, 26);
+            this.passwordText.TabIndex = 9;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(428, 48);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(84, 19);
+            this.label23.TabIndex = 8;
+            this.label23.Text = "Password:";
+            // 
+            // usernameTxt
+            // 
+            this.usernameTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameTxt.Location = new System.Drawing.Point(172, 45);
+            this.usernameTxt.Name = "usernameTxt";
+            this.usernameTxt.Size = new System.Drawing.Size(192, 26);
+            this.usernameTxt.TabIndex = 7;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(88, 48);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(89, 19);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "Username:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Rockwell", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(3, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(255, 25);
+            this.label21.TabIndex = 5;
+            this.label21.Text = "Please login to continue";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Rockwell", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(3, 11);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(345, 32);
+            this.label20.TabIndex = 8;
+            this.label20.Text = "Welcome to Admin Page";
+            // 
             // openTicket
             // 
             this.openTicket.FileName = "openTicket";
             // 
-            // button1
+            // categoryLbl
             // 
-            this.button1.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(299, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(253, 56);
-            this.button1.TabIndex = 43;
-            this.button1.Text = "View Visitors by Date";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.categoryLbl.AutoSize = true;
+            this.categoryLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoryLbl.Location = new System.Drawing.Point(80, 43);
+            this.categoryLbl.Name = "categoryLbl";
+            this.categoryLbl.Size = new System.Drawing.Size(79, 19);
+            this.categoryLbl.TabIndex = 7;
+            this.categoryLbl.Text = "Category";
             // 
-            // button2
+            // onehrLbl
             // 
-            this.button2.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(799, 14);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(215, 56);
-            this.button2.TabIndex = 50;
-            this.button2.Text = "View All Visitors ";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.onehrLbl.AutoSize = true;
+            this.onehrLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.onehrLbl.Location = new System.Drawing.Point(249, 43);
+            this.onehrLbl.Name = "onehrLbl";
+            this.onehrLbl.Size = new System.Drawing.Size(36, 19);
+            this.onehrLbl.TabIndex = 8;
+            this.onehrLbl.Text = "1Hr";
             // 
-            // label18
+            // twohrLbl
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(792, 389);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(0, 13);
-            this.label18.TabIndex = 37;
+            this.twohrLbl.AutoSize = true;
+            this.twohrLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.twohrLbl.Location = new System.Drawing.Point(410, 43);
+            this.twohrLbl.Name = "twohrLbl";
+            this.twohrLbl.Size = new System.Drawing.Size(36, 19);
+            this.twohrLbl.TabIndex = 9;
+            this.twohrLbl.Text = "2Hr";
             // 
-            // billError
+            // threehrLbl
             // 
-            this.billError.AutoSize = true;
-            this.billError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.billError.ForeColor = System.Drawing.Color.Red;
-            this.billError.Location = new System.Drawing.Point(756, 392);
-            this.billError.Name = "billError";
-            this.billError.Size = new System.Drawing.Size(135, 13);
-            this.billError.TabIndex = 38;
-            this.billError.Text = "please enter valid amount.*";
-            this.billError.Visible = false;
+            this.threehrLbl.AutoSize = true;
+            this.threehrLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.threehrLbl.Location = new System.Drawing.Point(564, 43);
+            this.threehrLbl.Name = "threehrLbl";
+            this.threehrLbl.Size = new System.Drawing.Size(36, 19);
+            this.threehrLbl.TabIndex = 10;
+            this.threehrLbl.Text = "3Hr";
             // 
-            // label19
+            // fourhrLbl
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(143, 61);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(239, 13);
-            this.label19.TabIndex = 51;
-            this.label19.Text = "Note: This pick this date as the start of the week.";
+            this.fourhrLbl.AutoSize = true;
+            this.fourhrLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fourhrLbl.Location = new System.Drawing.Point(732, 43);
+            this.fourhrLbl.Name = "fourhrLbl";
+            this.fourhrLbl.Size = new System.Drawing.Size(36, 19);
+            this.fourhrLbl.TabIndex = 11;
+            this.fourhrLbl.Text = "4Hr";
+            // 
+            // fivehrLbl
+            // 
+            this.fivehrLbl.AutoSize = true;
+            this.fivehrLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fivehrLbl.Location = new System.Drawing.Point(876, 43);
+            this.fivehrLbl.Name = "fivehrLbl";
+            this.fivehrLbl.Size = new System.Drawing.Size(88, 19);
+            this.fivehrLbl.TabIndex = 12;
+            this.fivehrLbl.Text = "Whole day";
+            // 
+            // childLbl
+            // 
+            this.childLbl.AutoSize = true;
+            this.childLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.childLbl.Location = new System.Drawing.Point(80, 88);
+            this.childLbl.Name = "childLbl";
+            this.childLbl.Size = new System.Drawing.Size(48, 19);
+            this.childLbl.TabIndex = 13;
+            this.childLbl.Text = "Child";
+            // 
+            // adultLbl
+            // 
+            this.adultLbl.AutoSize = true;
+            this.adultLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adultLbl.Location = new System.Drawing.Point(81, 134);
+            this.adultLbl.Name = "adultLbl";
+            this.adultLbl.Size = new System.Drawing.Size(48, 19);
+            this.adultLbl.TabIndex = 14;
+            this.adultLbl.Text = "Adult";
+            // 
+            // groupfiveLbl
+            // 
+            this.groupfiveLbl.AutoSize = true;
+            this.groupfiveLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupfiveLbl.Location = new System.Drawing.Point(81, 172);
+            this.groupfiveLbl.Name = "groupfiveLbl";
+            this.groupfiveLbl.Size = new System.Drawing.Size(88, 19);
+            this.groupfiveLbl.TabIndex = 15;
+            this.groupfiveLbl.Text = "Group of 5";
+            // 
+            // grouptenLbl
+            // 
+            this.grouptenLbl.AutoSize = true;
+            this.grouptenLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grouptenLbl.Location = new System.Drawing.Point(80, 210);
+            this.grouptenLbl.Name = "grouptenLbl";
+            this.grouptenLbl.Size = new System.Drawing.Size(97, 19);
+            this.grouptenLbl.TabIndex = 16;
+            this.grouptenLbl.Text = "Group of 10";
+            // 
+            // groupfifteenLbl
+            // 
+            this.groupfifteenLbl.AutoSize = true;
+            this.groupfifteenLbl.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupfifteenLbl.Location = new System.Drawing.Point(80, 249);
+            this.groupfifteenLbl.Name = "groupfifteenLbl";
+            this.groupfifteenLbl.Size = new System.Drawing.Size(97, 19);
+            this.groupfifteenLbl.TabIndex = 17;
+            this.groupfifteenLbl.Text = "Group of 15";
+            // 
+            // coTxt
+            // 
+            this.coTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coTxt.Location = new System.Drawing.Point(230, 85);
+            this.coTxt.Name = "coTxt";
+            this.coTxt.Size = new System.Drawing.Size(82, 26);
+            this.coTxt.TabIndex = 18;
+            // 
+            // ctTxt
+            // 
+            this.ctTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctTxt.Location = new System.Drawing.Point(386, 85);
+            this.ctTxt.Name = "ctTxt";
+            this.ctTxt.Size = new System.Drawing.Size(82, 26);
+            this.ctTxt.TabIndex = 19;
+            // 
+            // ctrTxt
+            // 
+            this.ctrTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctrTxt.Location = new System.Drawing.Point(546, 85);
+            this.ctrTxt.Name = "ctrTxt";
+            this.ctrTxt.Size = new System.Drawing.Size(82, 26);
+            this.ctrTxt.TabIndex = 20;
+            // 
+            // cfTxt
+            // 
+            this.cfTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cfTxt.Location = new System.Drawing.Point(711, 85);
+            this.cfTxt.Name = "cfTxt";
+            this.cfTxt.Size = new System.Drawing.Size(82, 26);
+            this.cfTxt.TabIndex = 21;
+            // 
+            // cfiText
+            // 
+            this.cfiText.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cfiText.Location = new System.Drawing.Point(880, 85);
+            this.cfiText.Name = "cfiText";
+            this.cfiText.Size = new System.Drawing.Size(82, 26);
+            this.cfiText.TabIndex = 22;
+            // 
+            // atrTxt
+            // 
+            this.atrTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.atrTxt.Location = new System.Drawing.Point(546, 131);
+            this.atrTxt.Name = "atrTxt";
+            this.atrTxt.Size = new System.Drawing.Size(82, 26);
+            this.atrTxt.TabIndex = 23;
+            // 
+            // afiTxt
+            // 
+            this.afiTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.afiTxt.Location = new System.Drawing.Point(880, 131);
+            this.afiTxt.Name = "afiTxt";
+            this.afiTxt.Size = new System.Drawing.Size(82, 26);
+            this.afiTxt.TabIndex = 24;
+            // 
+            // afTxt
+            // 
+            this.afTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.afTxt.Location = new System.Drawing.Point(711, 131);
+            this.afTxt.Name = "afTxt";
+            this.afTxt.Size = new System.Drawing.Size(82, 26);
+            this.afTxt.TabIndex = 25;
+            // 
+            // atTxt
+            // 
+            this.atTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.atTxt.Location = new System.Drawing.Point(386, 131);
+            this.atTxt.Name = "atTxt";
+            this.atTxt.Size = new System.Drawing.Size(82, 26);
+            this.atTxt.TabIndex = 26;
+            // 
+            // aoTxt
+            // 
+            this.aoTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aoTxt.Location = new System.Drawing.Point(230, 131);
+            this.aoTxt.Name = "aoTxt";
+            this.aoTxt.Size = new System.Drawing.Size(82, 26);
+            this.aoTxt.TabIndex = 27;
+            // 
+            // gfiffiTxt
+            // 
+            this.gfiffiTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gfiffiTxt.Location = new System.Drawing.Point(880, 246);
+            this.gfiffiTxt.Name = "gfiffiTxt";
+            this.gfiffiTxt.Size = new System.Drawing.Size(82, 26);
+            this.gfiffiTxt.TabIndex = 28;
+            // 
+            // gfiffTxt
+            // 
+            this.gfiffTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gfiffTxt.Location = new System.Drawing.Point(711, 246);
+            this.gfiffTxt.Name = "gfiffTxt";
+            this.gfiffTxt.Size = new System.Drawing.Size(82, 26);
+            this.gfiffTxt.TabIndex = 29;
+            // 
+            // gfiftrTxt
+            // 
+            this.gfiftrTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gfiftrTxt.Location = new System.Drawing.Point(546, 246);
+            this.gfiftrTxt.Name = "gfiftrTxt";
+            this.gfiftrTxt.Size = new System.Drawing.Size(82, 26);
+            this.gfiftrTxt.TabIndex = 30;
+            // 
+            // gfiftTxt
+            // 
+            this.gfiftTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gfiftTxt.Location = new System.Drawing.Point(386, 246);
+            this.gfiftTxt.Name = "gfiftTxt";
+            this.gfiftTxt.Size = new System.Drawing.Size(82, 26);
+            this.gfiftTxt.TabIndex = 31;
+            // 
+            // gfifoTxt
+            // 
+            this.gfifoTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gfifoTxt.Location = new System.Drawing.Point(230, 246);
+            this.gfifoTxt.Name = "gfifoTxt";
+            this.gfifoTxt.Size = new System.Drawing.Size(82, 26);
+            this.gfifoTxt.TabIndex = 32;
+            // 
+            // gtfiTxt
+            // 
+            this.gtfiTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gtfiTxt.Location = new System.Drawing.Point(880, 207);
+            this.gtfiTxt.Name = "gtfiTxt";
+            this.gtfiTxt.Size = new System.Drawing.Size(82, 26);
+            this.gtfiTxt.TabIndex = 33;
+            // 
+            // gtfTxt
+            // 
+            this.gtfTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gtfTxt.Location = new System.Drawing.Point(711, 207);
+            this.gtfTxt.Name = "gtfTxt";
+            this.gtfTxt.Size = new System.Drawing.Size(82, 26);
+            this.gtfTxt.TabIndex = 34;
+            // 
+            // gttrTxt
+            // 
+            this.gttrTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gttrTxt.Location = new System.Drawing.Point(546, 207);
+            this.gttrTxt.Name = "gttrTxt";
+            this.gttrTxt.Size = new System.Drawing.Size(82, 26);
+            this.gttrTxt.TabIndex = 35;
+            // 
+            // gttTxt
+            // 
+            this.gttTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gttTxt.Location = new System.Drawing.Point(386, 207);
+            this.gttTxt.Name = "gttTxt";
+            this.gttTxt.Size = new System.Drawing.Size(82, 26);
+            this.gttTxt.TabIndex = 36;
+            // 
+            // gtoTxt
+            // 
+            this.gtoTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gtoTxt.Location = new System.Drawing.Point(230, 207);
+            this.gtoTxt.Name = "gtoTxt";
+            this.gtoTxt.Size = new System.Drawing.Size(82, 26);
+            this.gtoTxt.TabIndex = 37;
+            // 
+            // gftrTxt
+            // 
+            this.gftrTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gftrTxt.Location = new System.Drawing.Point(546, 169);
+            this.gftrTxt.Name = "gftrTxt";
+            this.gftrTxt.Size = new System.Drawing.Size(82, 26);
+            this.gftrTxt.TabIndex = 38;
+            // 
+            // gffiTxt
+            // 
+            this.gffiTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gffiTxt.Location = new System.Drawing.Point(880, 169);
+            this.gffiTxt.Name = "gffiTxt";
+            this.gffiTxt.Size = new System.Drawing.Size(82, 26);
+            this.gffiTxt.TabIndex = 39;
+            // 
+            // gffTxt
+            // 
+            this.gffTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gffTxt.Location = new System.Drawing.Point(711, 169);
+            this.gffTxt.Name = "gffTxt";
+            this.gffTxt.Size = new System.Drawing.Size(82, 26);
+            this.gffTxt.TabIndex = 40;
+            // 
+            // gftTxt
+            // 
+            this.gftTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gftTxt.Location = new System.Drawing.Point(386, 169);
+            this.gftTxt.Name = "gftTxt";
+            this.gftTxt.Size = new System.Drawing.Size(82, 26);
+            this.gftTxt.TabIndex = 41;
+            // 
+            // gfoTxt
+            // 
+            this.gfoTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gfoTxt.Location = new System.Drawing.Point(230, 169);
+            this.gfoTxt.Name = "gfoTxt";
+            this.gfoTxt.Size = new System.Drawing.Size(82, 26);
+            this.gfoTxt.TabIndex = 42;
+            // 
+            // SetTicket
+            // 
+            this.SetTicket.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SetTicket.Location = new System.Drawing.Point(414, 298);
+            this.SetTicket.Name = "SetTicket";
+            this.SetTicket.Size = new System.Drawing.Size(225, 53);
+            this.SetTicket.TabIndex = 42;
+            this.SetTicket.Text = "Set Ticket Price";
+            this.SetTicket.UseVisualStyleBackColor = true;
+            this.SetTicket.Click += new System.EventHandler(this.SetTicket_Click);
             // 
             // Form1
             // 
@@ -1503,6 +2032,13 @@ namespace Coursework
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weeklyDataGrid)).EndInit();
+            this.AdminPanel.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.ticketPanel.ResumeLayout(false);
+            this.ticketPanel.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1599,6 +2135,54 @@ namespace Coursework
         private System.Windows.Forms.Label billError;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox passwordText;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox usernameTxt;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button loginButton;
+        private System.Windows.Forms.Panel ticketPanel;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox gfoTxt;
+        private System.Windows.Forms.TextBox gftTxt;
+        private System.Windows.Forms.TextBox gffTxt;
+        private System.Windows.Forms.TextBox gffiTxt;
+        private System.Windows.Forms.TextBox gftrTxt;
+        private System.Windows.Forms.TextBox gtoTxt;
+        private System.Windows.Forms.TextBox gttTxt;
+        private System.Windows.Forms.TextBox gttrTxt;
+        private System.Windows.Forms.TextBox gtfTxt;
+        private System.Windows.Forms.TextBox gtfiTxt;
+        private System.Windows.Forms.TextBox gfifoTxt;
+        private System.Windows.Forms.TextBox gfiftTxt;
+        private System.Windows.Forms.TextBox gfiftrTxt;
+        private System.Windows.Forms.TextBox gfiffTxt;
+        private System.Windows.Forms.TextBox gfiffiTxt;
+        private System.Windows.Forms.TextBox aoTxt;
+        private System.Windows.Forms.TextBox atTxt;
+        private System.Windows.Forms.TextBox afTxt;
+        private System.Windows.Forms.TextBox afiTxt;
+        private System.Windows.Forms.TextBox atrTxt;
+        private System.Windows.Forms.TextBox cfiText;
+        private System.Windows.Forms.TextBox cfTxt;
+        private System.Windows.Forms.TextBox ctrTxt;
+        private System.Windows.Forms.TextBox ctTxt;
+        private System.Windows.Forms.TextBox coTxt;
+        private System.Windows.Forms.Label groupfifteenLbl;
+        private System.Windows.Forms.Label grouptenLbl;
+        private System.Windows.Forms.Label groupfiveLbl;
+        private System.Windows.Forms.Label adultLbl;
+        private System.Windows.Forms.Label childLbl;
+        private System.Windows.Forms.Label fivehrLbl;
+        private System.Windows.Forms.Label fourhrLbl;
+        private System.Windows.Forms.Label threehrLbl;
+        private System.Windows.Forms.Label twohrLbl;
+        private System.Windows.Forms.Label onehrLbl;
+        private System.Windows.Forms.Label categoryLbl;
+        private System.Windows.Forms.Button SetTicket;
     }
 }
 
