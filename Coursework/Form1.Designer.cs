@@ -1584,7 +1584,7 @@ namespace Coursework
             this.ticketPanel.Controls.Add(this.label24);
             this.ticketPanel.Location = new System.Drawing.Point(10, 181);
             this.ticketPanel.Name = "ticketPanel";
-            this.ticketPanel.Size = new System.Drawing.Size(1045, 366);
+            this.ticketPanel.Size = new System.Drawing.Size(1045, 405);
             this.ticketPanel.TabIndex = 10;
             this.ticketPanel.Visible = false;
             // 
@@ -1612,13 +1612,13 @@ namespace Coursework
             this.adminTicketGrid.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.adminTicketGrid.Location = new System.Drawing.Point(42, 56);
             this.adminTicketGrid.Name = "adminTicketGrid";
-            this.adminTicketGrid.Size = new System.Drawing.Size(972, 196);
+            this.adminTicketGrid.Size = new System.Drawing.Size(972, 242);
             this.adminTicketGrid.TabIndex = 45;
             // 
             // ViewTicket
             // 
             this.ViewTicket.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewTicket.Location = new System.Drawing.Point(149, 291);
+            this.ViewTicket.Location = new System.Drawing.Point(150, 328);
             this.ViewTicket.Name = "ViewTicket";
             this.ViewTicket.Size = new System.Drawing.Size(225, 53);
             this.ViewTicket.TabIndex = 44;
@@ -1629,7 +1629,7 @@ namespace Coursework
             // SetTicket
             // 
             this.SetTicket.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SetTicket.Location = new System.Drawing.Point(656, 291);
+            this.SetTicket.Location = new System.Drawing.Point(661, 328);
             this.SetTicket.Name = "SetTicket";
             this.SetTicket.Size = new System.Drawing.Size(225, 53);
             this.SetTicket.TabIndex = 42;

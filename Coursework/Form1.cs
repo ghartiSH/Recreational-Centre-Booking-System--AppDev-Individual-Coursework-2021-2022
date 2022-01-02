@@ -44,7 +44,7 @@ namespace Coursework
             try
             {
                 Visitors vs = new Visitors();
-                FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/visitors.xml", FileMode.Create, FileAccess.Write);
+                FileStream file = new FileStream("../../../visitors.xml", FileMode.Create, FileAccess.Write);
 
                 vs.fullname = fullNameTxt.Text;
                 vs.email = emailTxt.Text;
@@ -121,10 +121,8 @@ namespace Coursework
         /// </summary>
         private void LoadXml() 
         {
-            List<Visitors> vis = new List<Visitors>();
-            vis = ReadVisitors(); // calling readVisitors method which returns a list of visitors type
-
-            visitorListGrid.DataSource = vis;
+           
+            visitorListGrid.DataSource = ReadVisitors();
         }
 
         /// <summary>
@@ -132,10 +130,7 @@ namespace Coursework
         /// </summary>
         private void LoadCheckedVisitorsXML()
         {
-            List<CheckedoutVisitors> chvis = new List<CheckedoutVisitors>();
-            chvis = GetCheckedoutVisitors(); //calling method that returs a list of checkout visitors
-
-            dailyReportGrid.DataSource = chvis;
+            dailyReportGrid.DataSource = GetCheckedoutVisitors();
         }
         
 
@@ -300,7 +295,7 @@ namespace Coursework
 
             if (isValidNumber)
             {
-                FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/paidVisitors.xml", FileMode.Create, FileAccess.Write);
+                FileStream file = new FileStream("../../../paidVisitors.xml", FileMode.Create, FileAccess.Write);
                 paidSerializer.Serialize(file, checkedoutVisitors);
                 file.Close();
                 MessageBox.Show("Visitor Checked out successfully..");
@@ -377,7 +372,7 @@ namespace Coursework
         {
             try
             {
-                FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/paidVisitors.xml", FileMode.Open, FileAccess.Read);
+                FileStream file = new FileStream("../../../paidVisitors.xml", FileMode.Open, FileAccess.Read);
                 checkedoutVisitors = (List<CheckedoutVisitors>)paidSerializer.Deserialize(file);
                 file.Close();
             }
@@ -395,7 +390,7 @@ namespace Coursework
         {
             try
             {
-                FileStream file = new FileStream("C:/Users/bhara/source/repos/Coursework/visitors.xml", FileMode.Open, FileAccess.Read);
+                FileStream file = new FileStream("../../../visitors.xml", FileMode.Open, FileAccess.Read);
                 visitors = (List<Visitors>)xmlSerializer.Deserialize(file);
                 file.Close();
             }
@@ -416,7 +411,7 @@ namespace Coursework
             try
             {
 
-                string[] lines = System.IO.File.ReadAllLines("C:/Users/bhara/source/repos/Coursework/ticket.csv");
+                string[] lines = System.IO.File.ReadAllLines("../../../ticket.csv");
                 if (lines.Length > 0) //checking if the file is not empty
                 {
                     string firstLine = lines[0];
@@ -465,7 +460,7 @@ namespace Coursework
 
             csv += "\r\n"; //new line
 
-            foreach (DataGridViewRow row in dg.Rows)//adding rows
+            foreach (DataGridViewRow row in dg.Rows)//adding rowsv
             {
                 foreach (DataGridViewCell cell in row.Cells)
                 {
@@ -484,7 +479,7 @@ namespace Coursework
 
         private void GenerateDailyReport_Click(object sender, EventArgs e) //generating csv file for daily report
         {
-            string path = "C:/Users/bhara/source/repos/Coursework/DailyReport.csv";
+            string path = "../../../DailyReport.csv";
 
             CreateCSV(path, dailyReportGrid);
             MessageBox.Show("CSV report generated Successfully");
@@ -731,7 +726,7 @@ namespace Coursework
 
         private void GenerateWeeklyReport_Click(object sender, EventArgs e) //generating weekly reprot csv
         {
-            string path = "C:/Users/bhara/source/repos/Coursework/WeeklyReport.csv";
+            string path = "../../../WeeklyReport.csv";
 
             CreateCSV(path, weeklyDataGrid);
             MessageBox.Show("CSV report generated Successfully");
@@ -798,7 +793,7 @@ namespace Coursework
             }
 
             //Exporting to CSV.
-            string folderPath = "C:/Users/bhara/source/repos/Coursework/";
+            string folderPath = "../../../";
             File.WriteAllText(folderPath + "ticket.csv", csv);
             MessageBox.Show("Ticket Edited Successfully..");
 
