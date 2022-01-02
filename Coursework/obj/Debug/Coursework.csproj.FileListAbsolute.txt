@@ -9,3 +9,4 @@ C:\Users\bhara\source\repos\Coursework\Coursework\obj\Debug\Coursework.csproj.Co
 C:\Users\bhara\source\repos\Coursework\Coursework\obj\Debug\Coursework.exe
 C:\Users\bhara\source\repos\Coursework\Coursework\obj\Debug\Coursework.pdb
 C:\Users\bhara\source\repos\Coursework\Coursework\obj\Debug\Coursework.Graph.resources
+C:\Users\bhara\source\repos\Coursework\Coursework\obj\Debug\Coursework.GraphbyIncome.resources

@@ -121,4 +121,37 @@
     <outDateTime>2022-01-02T11:00:00</outDateTime>
     <paid>1100</paid>
   </CheckedoutVisitors>
+  <CheckedoutVisitors>
+    <fullname>bub</fullname>
+    <email>bub</email>
+    <phone>142</phone>
+    <category>Adult</category>
+    <inDateTime>2022-01-06T10:00:00</inDateTime>
+    <totalVisitors>3</totalVisitors>
+    <totalChildren>0</totalChildren>
+    <outDateTime>2022-01-02T11:00:00</outDateTime>
+    <paid>1650</paid>
+  </CheckedoutVisitors>
+  <CheckedoutVisitors>
+    <fullname>shak</fullname>
+    <email>shak</email>
+    <phone>852</phone>
+    <category>Child</category>
+    <inDateTime>2022-01-04T10:00:00</inDateTime>
+    <totalVisitors>4</totalVisitors>
+    <totalChildren>3</totalChildren>
+    <outDateTime>2022-01-02T11:00:00</outDateTime>
+    <paid>2000</paid>
+  </CheckedoutVisitors>
+  <CheckedoutVisitors>
+    <fullname>Col</fullname>
+    <email>Col</email>
+    <phone>5563</phone>
+    <category>Child</category>
+    <inDateTime>2022-01-03T10:00:00</inDateTime>
+    <totalVisitors>4</totalVisitors>
+    <totalChildren>0</totalChildren>
+    <outDateTime>2022-01-02T11:00:00</outDateTime>
+    <paid>2000</paid>
+  </CheckedoutVisitors>
 </ArrayOfCheckedoutVisitors>

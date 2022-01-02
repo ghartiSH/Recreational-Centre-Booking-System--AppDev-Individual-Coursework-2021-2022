@@ -10,5 +10,7 @@ namespace Coursework
     {
         public string category { get; set; }
         public int noOfVisitors { get; set; }
+        public int totalRegistrations { get; set; }
+
     }
 }

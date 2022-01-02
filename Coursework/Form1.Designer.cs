@@ -91,6 +91,9 @@ namespace Coursework
             this.label6 = new System.Windows.Forms.Label();
             this.DailyReport = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.searchVisitor = new System.Windows.Forms.Button();
+            this.reportCategory = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.dailyddCmb = new System.Windows.Forms.ComboBox();
             this.dailymmCmb = new System.Windows.Forms.ComboBox();
@@ -104,6 +107,7 @@ namespace Coursework
             this.label9 = new System.Windows.Forms.Label();
             this.WeeklyReport = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.generateGraphByIncome = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.GenerateGraph = new System.Windows.Forms.Button();
@@ -121,6 +125,7 @@ namespace Coursework
             this.AdminPanel = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
             this.ticketPanel = new System.Windows.Forms.Panel();
+            this.ticketMessage = new System.Windows.Forms.Label();
             this.adminTicketGrid = new System.Windows.Forms.DataGridView();
             this.ViewTicket = new System.Windows.Forms.Button();
             this.SetTicket = new System.Windows.Forms.Button();
@@ -134,10 +139,6 @@ namespace Coursework
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.openTicket = new System.Windows.Forms.OpenFileDialog();
-            this.ticketMessage = new System.Windows.Forms.Label();
-            this.reportCategory = new System.Windows.Forms.ComboBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.searchVisitor = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Home.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -221,8 +222,10 @@ namespace Coursework
             this.ticketGrid.AllowUserToResizeColumns = false;
             this.ticketGrid.AllowUserToResizeRows = false;
             this.ticketGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ticketGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ticketGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.ticketGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.ticketGrid.Enabled = false;
+            this.ticketGrid.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.ticketGrid.Location = new System.Drawing.Point(6, 27);
             this.ticketGrid.Name = "ticketGrid";
             this.ticketGrid.ReadOnly = true;
@@ -347,6 +350,7 @@ namespace Coursework
             this.childrenCmb.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.childrenCmb.FormattingEnabled = true;
             this.childrenCmb.Items.AddRange(new object[] {
+            "0",
             "1",
             "2",
             "3",
@@ -378,6 +382,7 @@ namespace Coursework
             this.totalVisitorsCmb.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalVisitorsCmb.FormattingEnabled = true;
             this.totalVisitorsCmb.Items.AddRange(new object[] {
+            "0",
             "1",
             "2",
             "3",
@@ -1096,6 +1101,43 @@ namespace Coursework
             this.panel6.Size = new System.Drawing.Size(1034, 550);
             this.panel6.TabIndex = 7;
             // 
+            // searchVisitor
+            // 
+            this.searchVisitor.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchVisitor.Location = new System.Drawing.Point(715, 27);
+            this.searchVisitor.Name = "searchVisitor";
+            this.searchVisitor.Size = new System.Drawing.Size(305, 56);
+            this.searchVisitor.TabIndex = 46;
+            this.searchVisitor.Text = "Visitor by Date and Category";
+            this.searchVisitor.UseVisualStyleBackColor = true;
+            this.searchVisitor.Click += new System.EventHandler(this.searchVisitor_Click);
+            // 
+            // reportCategory
+            // 
+            this.reportCategory.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportCategory.FormattingEnabled = true;
+            this.reportCategory.Items.AddRange(new object[] {
+            "Adult",
+            "Child",
+            "Group of 5",
+            "Group of 10",
+            "Group of 15"});
+            this.reportCategory.Location = new System.Drawing.Point(595, 44);
+            this.reportCategory.Name = "reportCategory";
+            this.reportCategory.Size = new System.Drawing.Size(114, 27);
+            this.reportCategory.TabIndex = 45;
+            this.reportCategory.Text = "Adult";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(515, 47);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(84, 19);
+            this.label25.TabIndex = 44;
+            this.label25.Text = "Category:";
+            // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1219,7 +1261,7 @@ namespace Coursework
             this.VisitorsByCategory.Name = "VisitorsByCategory";
             this.VisitorsByCategory.Size = new System.Drawing.Size(274, 56);
             this.VisitorsByCategory.TabIndex = 37;
-            this.VisitorsByCategory.Text = "Total Visitors by Category";
+            this.VisitorsByCategory.Text = "All Visitors by Category";
             this.VisitorsByCategory.UseVisualStyleBackColor = true;
             this.VisitorsByCategory.Click += new System.EventHandler(this.VisitorsByCategory_Click);
             // 
@@ -1280,6 +1322,7 @@ namespace Coursework
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.generateGraphByIncome);
             this.panel7.Controls.Add(this.label19);
             this.panel7.Controls.Add(this.button2);
             this.panel7.Controls.Add(this.GenerateGraph);
@@ -1297,6 +1340,17 @@ namespace Coursework
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1030, 549);
             this.panel7.TabIndex = 8;
+            // 
+            // generateGraphByIncome
+            // 
+            this.generateGraphByIncome.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.generateGraphByIncome.Location = new System.Drawing.Point(598, 444);
+            this.generateGraphByIncome.Name = "generateGraphByIncome";
+            this.generateGraphByIncome.Size = new System.Drawing.Size(177, 56);
+            this.generateGraphByIncome.TabIndex = 52;
+            this.generateGraphByIncome.Text = "Generate Graph (Income)";
+            this.generateGraphByIncome.UseVisualStyleBackColor = true;
+            this.generateGraphByIncome.Click += new System.EventHandler(this.generateGraphByIncome_Click);
             // 
             // label19
             // 
@@ -1322,22 +1376,22 @@ namespace Coursework
             // GenerateGraph
             // 
             this.GenerateGraph.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GenerateGraph.Location = new System.Drawing.Point(524, 444);
+            this.GenerateGraph.Location = new System.Drawing.Point(399, 444);
             this.GenerateGraph.Name = "GenerateGraph";
-            this.GenerateGraph.Size = new System.Drawing.Size(225, 56);
+            this.GenerateGraph.Size = new System.Drawing.Size(177, 56);
             this.GenerateGraph.TabIndex = 49;
-            this.GenerateGraph.Text = "Generate Graph";
+            this.GenerateGraph.Text = "Generate Graph (Visitors)";
             this.GenerateGraph.UseVisualStyleBackColor = true;
             this.GenerateGraph.Click += new System.EventHandler(this.GenerateGraph_Click);
             // 
             // SortByIncome
             // 
             this.SortByIncome.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SortByIncome.Location = new System.Drawing.Point(278, 444);
+            this.SortByIncome.Location = new System.Drawing.Point(197, 444);
             this.SortByIncome.Name = "SortByIncome";
-            this.SortByIncome.Size = new System.Drawing.Size(208, 56);
+            this.SortByIncome.Size = new System.Drawing.Size(185, 56);
             this.SortByIncome.TabIndex = 48;
-            this.SortByIncome.Text = "Sort by Income";
+            this.SortByIncome.Text = "Sort by Income (Descending)";
             this.SortByIncome.UseVisualStyleBackColor = true;
             this.SortByIncome.Click += new System.EventHandler(this.SortByIncome_Click);
             // 
@@ -1460,11 +1514,11 @@ namespace Coursework
             // SortByVisitors
             // 
             this.SortByVisitors.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SortByVisitors.Location = new System.Drawing.Point(27, 444);
+            this.SortByVisitors.Location = new System.Drawing.Point(8, 444);
             this.SortByVisitors.Name = "SortByVisitors";
-            this.SortByVisitors.Size = new System.Drawing.Size(215, 56);
+            this.SortByVisitors.Size = new System.Drawing.Size(173, 56);
             this.SortByVisitors.TabIndex = 40;
-            this.SortByVisitors.Text = "Sort by Visitors";
+            this.SortByVisitors.Text = "Sort by Visitors (Ascending)";
             this.SortByVisitors.UseVisualStyleBackColor = true;
             this.SortByVisitors.Click += new System.EventHandler(this.SortByVisitors_Click);
             // 
@@ -1534,12 +1588,26 @@ namespace Coursework
             this.ticketPanel.TabIndex = 10;
             this.ticketPanel.Visible = false;
             // 
+            // ticketMessage
+            // 
+            this.ticketMessage.AutoSize = true;
+            this.ticketMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ticketMessage.Location = new System.Drawing.Point(188, 29);
+            this.ticketMessage.Name = "ticketMessage";
+            this.ticketMessage.Size = new System.Drawing.Size(834, 24);
+            this.ticketMessage.TabIndex = 52;
+            this.ticketMessage.Text = "Note: Give only Integer values to the ticket field and click SET TICKET PRICE to " +
+    "edit the ticket price.";
+            this.ticketMessage.Visible = false;
+            // 
             // adminTicketGrid
             // 
             this.adminTicketGrid.AllowUserToAddRows = false;
-            this.adminTicketGrid.AllowUserToOrderColumns = true;
+            this.adminTicketGrid.AllowUserToDeleteRows = false;
+            this.adminTicketGrid.AllowUserToResizeColumns = false;
+            this.adminTicketGrid.AllowUserToResizeRows = false;
             this.adminTicketGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.adminTicketGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.adminTicketGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.adminTicketGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.adminTicketGrid.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.adminTicketGrid.Location = new System.Drawing.Point(42, 56);
@@ -1610,6 +1678,7 @@ namespace Coursework
             this.passwordTxt.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordTxt.Location = new System.Drawing.Point(518, 45);
             this.passwordTxt.Name = "passwordTxt";
+            this.passwordTxt.PasswordChar = '*';
             this.passwordTxt.Size = new System.Drawing.Size(192, 26);
             this.passwordTxt.TabIndex = 9;
             // 
@@ -1664,55 +1733,6 @@ namespace Coursework
             // openTicket
             // 
             this.openTicket.FileName = "openTicket";
-            // 
-            // ticketMessage
-            // 
-            this.ticketMessage.AutoSize = true;
-            this.ticketMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ticketMessage.Location = new System.Drawing.Point(188, 29);
-            this.ticketMessage.Name = "ticketMessage";
-            this.ticketMessage.Size = new System.Drawing.Size(834, 24);
-            this.ticketMessage.TabIndex = 52;
-            this.ticketMessage.Text = "Note: Give only Integer values to the ticket field and click SET TICKET PRICE to " +
-    "edit the ticket price.";
-            this.ticketMessage.Visible = false;
-            // 
-            // reportCategory
-            // 
-            this.reportCategory.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportCategory.FormattingEnabled = true;
-            this.reportCategory.Items.AddRange(new object[] {
-            "Adult",
-            "Child",
-            "Group of 5",
-            "Group of 10",
-            "Group of 15"});
-            this.reportCategory.Location = new System.Drawing.Point(611, 44);
-            this.reportCategory.Name = "reportCategory";
-            this.reportCategory.Size = new System.Drawing.Size(114, 27);
-            this.reportCategory.TabIndex = 45;
-            this.reportCategory.Text = "Adult";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(531, 47);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(84, 19);
-            this.label25.TabIndex = 44;
-            this.label25.Text = "Category:";
-            // 
-            // searchVisitor
-            // 
-            this.searchVisitor.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchVisitor.Location = new System.Drawing.Point(731, 27);
-            this.searchVisitor.Name = "searchVisitor";
-            this.searchVisitor.Size = new System.Drawing.Size(287, 56);
-            this.searchVisitor.TabIndex = 46;
-            this.searchVisitor.Text = "View Visitors by Category";
-            this.searchVisitor.UseVisualStyleBackColor = true;
-            this.searchVisitor.Click += new System.EventHandler(this.searchVisitor_Click);
             // 
             // Form1
             // 
@@ -1875,6 +1895,7 @@ namespace Coursework
         private System.Windows.Forms.Button searchVisitor;
         private System.Windows.Forms.ComboBox reportCategory;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Button generateGraphByIncome;
     }
 }
 

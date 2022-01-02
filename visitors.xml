@@ -9,4 +9,40 @@
     <totalVisitors>2</totalVisitors>
     <totalChildren>0</totalChildren>
   </Visitors>
+  <Visitors>
+    <fullname>bub</fullname>
+    <email>bub@gmail.com</email>
+    <phone>142</phone>
+    <category>Adult</category>
+    <inDateTime>2022-01-06T10:00:00</inDateTime>
+    <totalVisitors>3</totalVisitors>
+    <totalChildren>0</totalChildren>
+  </Visitors>
+  <Visitors>
+    <fullname>shak</fullname>
+    <email>shak@gmail.com</email>
+    <phone>852</phone>
+    <category>Child</category>
+    <inDateTime>2022-01-04T10:00:00</inDateTime>
+    <totalVisitors>4</totalVisitors>
+    <totalChildren>3</totalChildren>
+  </Visitors>
+  <Visitors>
+    <fullname>Sus</fullname>
+    <email>sus@email.com</email>
+    <phone>140</phone>
+    <category>Group of 5</category>
+    <inDateTime>2022-01-07T13:00:00</inDateTime>
+    <totalVisitors>6</totalVisitors>
+    <totalChildren>0</totalChildren>
+  </Visitors>
+  <Visitors>
+    <fullname>Col</fullname>
+    <email>col@email.com</email>
+    <phone>5563</phone>
+    <category>Child</category>
+    <inDateTime>2022-01-03T10:00:00</inDateTime>
+    <totalVisitors>4</totalVisitors>
+    <totalChildren>0</totalChildren>
+  </Visitors>
 </ArrayOfVisitors>
